@@ -1,135 +1,15 @@
+// src/components/sections/Experience/Experience.tsx
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Building, Users, Code, Truck } from 'lucide-react';
+import { useLanguage } from '../../../contexts/LanguageContext';
+import { translations, type ExperienceItem } from '../../../data/translations';
 
 const Experience: React.FC = () => {
-    const [language, setLanguage] = useState<'en' | 'sv'>('en');
+    const { language } = useLanguage();
     const [activeExperience, setActiveExperience] = useState<string | null>(null);
-
-    const translations = {
-        en: {
-            title: 'Experience',
-            subtitle: 'My professional journey',
-            current: 'Current',
-            experiences: [
-                {
-                    id: 'postnord',
-                    company: 'PostNord',
-                    position: 'Terminal Worker',
-                    period: 'Sep 2023 - Present',
-                    duration: '6+ months',
-                    location: 'Stockholm, Sweden',
-                    type: 'Current Role',
-                    description: 'Working in logistics while actively developing freelance web projects. This role provides stability while I grow my development skills and build my portfolio.',
-                    highlights: [
-                        'Managing terminal operations',
-                        'Developing freelance projects in spare time',
-                        'Building portfolio with real client work'
-                    ],
-                    technologies: [],
-                    icon: 'Truck'
-                },
-                {
-                    id: 'alexum',
-                    company: 'Alexum AB',
-                    position: 'Frontend Developer',
-                    period: 'Jan 2023 - Aug 2023',
-                    duration: '8 months',
-                    location: 'Stockholm, Sweden',
-                    type: 'Startup Experience',
-                    description: 'Startup environment that shaped my development career. Worked on three different projects as part of a collaborative team, focusing on frontend development with React.',
-                    highlights: [
-                        'Worked on 3 diverse projects',
-                        'Collaborative team environment',
-                        'Frontend focus with React & TypeScript',
-                        'Contributing to Node.js backend tasks'
-                    ],
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript', 'HTML', 'CSS'],
-                    icon: 'Building'
-                },
-                {
-                    id: 'bootcamp',
-                    company: 'Bootcamp Program',
-                    position: 'Full-Stack Student',
-                    period: '2021',
-                    duration: '1 year',
-                    location: 'Turkey',
-                    type: 'Foundation',
-                    description: 'Intensive full-stack development program that laid the foundation for my programming career. Built a comprehensive Rent-a-Car management system.',
-                    highlights: [
-                        'Comprehensive Rent-a-Car project',
-                        'Backend development with Java',
-                        'Database design and management',
-                        'Full-stack understanding'
-                    ],
-                    technologies: ['Java', 'SQL', 'MySQL', 'REST APIs', 'Git'],
-                    icon: 'Code'
-                }
-            ]
-        },
-        sv: {
-            title: 'Erfarenhet',
-            subtitle: 'Min professionella resa',
-            current: 'Nuvarande',
-            experiences: [
-                {
-                    id: 'postnord',
-                    company: 'PostNord',
-                    position: 'Terminalarbetare',
-                    period: 'Sep 2023 - Nuvarande',
-                    duration: '6+ månader',
-                    location: 'Stockholm, Sverige',
-                    type: 'Nuvarande Roll',
-                    description: 'Arbetar inom logistik medan jag aktivt utvecklar frilans webbprojekt. Denna roll ger stabilitet medan jag utvecklar mina utvecklingsfärdigheter och bygger min portfölj.',
-                    highlights: [
-                        'Hanterar terminaloperationer',
-                        'Utvecklar frilansprojekt på fritiden',
-                        'Bygger portfölj med riktiga kundprojekt'
-                    ],
-                    technologies: [],
-                    icon: 'Truck'
-                },
-                {
-                    id: 'alexum',
-                    company: 'Alexum AB',
-                    position: 'Frontend Utvecklare',
-                    period: 'Jan 2023 - Aug 2023',
-                    duration: '8 månader',
-                    location: 'Stockholm, Sverige',
-                    type: 'Startup Erfarenhet',
-                    description: 'Startup-miljö som formade min utvecklingskarriär. Arbetade med tre olika projekt som del av ett kollaborativt team, fokuserade på frontend-utveckling med React.',
-                    highlights: [
-                        'Arbetade med 3 olika projekt',
-                        'Kollaborativ teammiljö',
-                        'Frontend-fokus med React & TypeScript',
-                        'Bidrog till Node.js backend-uppgifter'
-                    ],
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript', 'HTML', 'CSS'],
-                    icon: 'Building'
-                },
-                {
-                    id: 'bootcamp',
-                    company: 'Bootcamp Program',
-                    position: 'Full-Stack Student',
-                    period: '2021',
-                    duration: '1 år',
-                    location: 'Turkiet',
-                    type: 'Grund',
-                    description: 'Intensivt full-stack utvecklingsprogram som lade grunden för min programmeringskarriär. Byggde ett omfattande biluthyrningssystem.',
-                    highlights: [
-                        'Omfattande biluthyrningsprojekt',
-                        'Backend-utveckling med Java',
-                        'Databasdesign och hantering',
-                        'Full-stack förståelse'
-                    ],
-                    technologies: ['Java', 'SQL', 'MySQL', 'REST APIs', 'Git'],
-                    icon: 'Code'
-                }
-            ]
-        }
-    };
-
-    const t = translations[language];
+    const data = translations[language].experience;
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -165,49 +45,122 @@ const Experience: React.FC = () => {
     };
 
     return (
-        <section className="relative min-h-screen py-20 overflow-hidden">
+        <section className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
 
-            {/* Background Image - Same as Hero */}
+            {/* Background Image */}
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: `url("/images/cartoon-smoke-illustrated.jpg")`,
+                    backgroundImage: `url("/images/Experience.png")`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat"
                 }}
             />
 
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/90"></div>
+            <div className="absolute inset-0 bg-white/85"></div>
 
-            {/* Language Toggle */}
-            <div className="fixed top-32 right-6 z-50">
-                <div className="flex items-center bg-white/90 backdrop-blur-sm rounded-full p-1 border border-white/50 shadow-lg">
-                    <motion.button
-                        className={`px-3 py-1 text-xs font-medium rounded-full transition-all duration-300 ${
-                            language === 'en'
-                                ? 'bg-red-600 text-white shadow-md'
-                                : 'text-black hover:bg-white/50'
-                        }`}
-                        onClick={() => setLanguage('en')}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        EN
-                    </motion.button>
+            {/* Custom Smooth Cloud Background */}
+            <div className="absolute inset-0">
+                {/* Animated Clouds */}
+                <div className="absolute inset-0">
+                    {/* Cloud 1 - Different animation than About */}
+                    <motion.div
+                        className="absolute top-32 -right-32 w-112 h-36 opacity-22"
+                        animate={{
+                            x: [0, -120, 0],
+                            y: [0, 25, 0],
+                        }}
+                        transition={{
+                            duration: 24,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        style={{
+                            background: 'radial-gradient(ellipse, rgba(180, 200, 230, 0.5) 0%, rgba(180, 200, 230, 0.15) 70%, transparent 100%)',
+                            filter: 'blur(1.5px)'
+                        }}
+                    />
 
-                    <motion.button
-                        className={`px-3 py-1 text-xs font-medium rounded-full transition-all duration-300 ${
-                            language === 'sv'
-                                ? 'bg-red-600 text-white shadow-md'
-                                : 'text-black hover:bg-white/50'
-                        }`}
-                        onClick={() => setLanguage('sv')}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        SV
-                    </motion.button>
+                    {/* Cloud 2 */}
+                    <motion.div
+                        className="absolute top-80 left-0 w-88 h-30 opacity-18"
+                        animate={{
+                            x: [0, 90, 0],
+                            y: [0, -15, 0],
+                        }}
+                        transition={{
+                            duration: 28,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        style={{
+                            background: 'radial-gradient(ellipse, rgba(200, 220, 250, 0.4) 0%, rgba(200, 220, 250, 0.1) 70%, transparent 100%)',
+                            filter: 'blur(1px)'
+                        }}
+                    />
+
+                    {/* Cloud 3 */}
+                    <motion.div
+                        className="absolute bottom-32 -right-16 w-76 h-26 opacity-20"
+                        animate={{
+                            x: [0, -70, 0],
+                            y: [0, 20, 0],
+                        }}
+                        transition={{
+                            duration: 26,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        style={{
+                            background: 'radial-gradient(ellipse, rgba(160, 180, 210, 0.6) 0%, rgba(160, 180, 210, 0.2) 70%, transparent 100%)',
+                            filter: 'blur(1.8px)'
+                        }}
+                    />
+
+                    {/* Cloud 4 */}
+                    <motion.div
+                        className="absolute top-1/3 left-16 w-68 h-22 opacity-16"
+                        animate={{
+                            x: [0, 50, 0],
+                            y: [0, -18, 0],
+                        }}
+                        transition={{
+                            duration: 30,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        style={{
+                            background: 'radial-gradient(ellipse, rgba(210, 225, 245, 0.5) 0%, rgba(210, 225, 245, 0.12) 70%, transparent 100%)',
+                            filter: 'blur(1.3px)'
+                        }}
+                    />
+
+                    {/* Floating particles */}
+                    {[...Array(12)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute w-6 h-6 rounded-full opacity-8"
+                            style={{
+                                top: `${Math.random() * 85 + 10}%`,
+                                left: `${Math.random() * 85 + 10}%`,
+                                background: 'radial-gradient(circle, rgba(170, 190, 230, 0.4) 0%, rgba(170, 190, 230, 0.1) 70%, transparent 100%)',
+                            }}
+                            animate={{
+                                y: [0, -25, 0],
+                                x: [0, 15, 0],
+                                opacity: [0.08, 0.25, 0.08],
+                                scale: [1, 1.2, 1]
+                            }}
+                            transition={{
+                                duration: 10 + Math.random() * 8,
+                                repeat: Infinity,
+                                delay: Math.random() * 4,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    ))}
                 </div>
             </div>
 
@@ -223,10 +176,10 @@ const Experience: React.FC = () => {
                     {/* Section Header */}
                     <motion.div variants={itemVariants} className="text-center mb-20">
                         <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-black mb-6">
-                            {t.title}
+                            {data.title}
                         </h2>
                         <p className="text-xl md:text-2xl text-neutral-600 font-light">
-                            {t.subtitle}
+                            {data.subtitle}
                         </p>
                     </motion.div>
 
@@ -237,7 +190,7 @@ const Experience: React.FC = () => {
 
                         {/* Experience Items */}
                         <div className="space-y-12">
-                            {t.experiences.map((exp, index) => {
+                            {data.experiences.map((exp: ExperienceItem, index: number) => {
                                 const IconComponent = getIcon(exp.icon);
                                 const isActive = activeExperience === exp.id;
                                 const isLeft = index % 2 === 0;
@@ -284,7 +237,7 @@ const Experience: React.FC = () => {
                                                     </div>
                                                     {exp.id === 'postnord' && (
                                                         <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                                                            {t.current}
+                                                            {data.current}
                                                         </span>
                                                     )}
                                                 </div>
@@ -318,7 +271,7 @@ const Experience: React.FC = () => {
                                                             <div className="mb-4">
                                                                 <h4 className="font-semibold text-black mb-2">Key Highlights:</h4>
                                                                 <ul className="space-y-1">
-                                                                    {exp.highlights.map((highlight, idx) => (
+                                                                    {exp.highlights.map((highlight: string, idx: number) => (
                                                                         <li key={idx} className="text-sm text-neutral-600 flex items-start">
                                                                             <span className="w-1 h-1 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                                                                             {highlight}
@@ -332,7 +285,7 @@ const Experience: React.FC = () => {
                                                                 <div>
                                                                     <h4 className="font-semibold text-black mb-2">Technologies:</h4>
                                                                     <div className="flex flex-wrap gap-2">
-                                                                        {exp.technologies.map((tech, idx) => (
+                                                                        {exp.technologies.map((tech: string, idx: number) => (
                                                                             <span key={idx} className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded">
                                                                                 {tech}
                                                                             </span>

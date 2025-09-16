@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1e293b" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Frontend Developer specializing in React, TypeScript, and modern web technologies. Creating digital experiences with clean, performant code." />
+    <meta name="keywords" content="Frontend Developer, React Developer, TypeScript, JavaScript, Web Developer, Stockholm, Sweden, Portfolio" />
+    <meta name="author" content="Your Name" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Your Name - Frontend Developer Portfolio" />
+    <meta property="og:description" content="Frontend Developer specializing in React, TypeScript, and modern web technologies." />
+    <meta property="og:url" content="https://yourportfolio.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your Name - Frontend Developer Portfolio" />
+    <meta name="twitter:description" content="Frontend Developer specializing in React, TypeScript, and modern web technologies." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Fonts - Skandinav Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+
+    <!-- Language Attributes for i18n -->
+    <meta name="language" content="English, Svenska">
+    <meta name="robots" content="index, follow">
+
+    <title>Your Name - Frontend Developer | Stockholm</title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Your Name",
+            "jobTitle": "Frontend Developer",
+            "url": "https://yourportfolio.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Stockholm",
+                "addressCountry": "SE"
+            },
+            "sameAs": [
+                "https://linkedin.com/in/yourprofile",
+                "https://github.com/yourusername"
+            ],
+            "knowsAbout": [
+                "React",
+                "TypeScript",
+                "JavaScript",
+                "Node.js",
+                "Frontend Development",
+                "Web Development"
+            ]
+        }
+    </script>
+
+    <!-- Performance Optimization -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+<!-- Loading Spinner for Better UX -->
+<div id="initial-loader" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  ">
+    <div style="
+      width: 40px;
+      height: 40px;
+      border: 3px solid #334155;
+      border-top: 3px solid #ef4444;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    "></div>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</div>
+
+<div id="root"></div>
+
+<!-- Remove initial loader when React loads -->
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const loader = document.getElementById('initial-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => loader.remove(), 500);
+            }
+        }, 1000);
+    });
+</script>
+
+<!-- Web Analytics - Google Analytics placeholder -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+-->
+</body>
+</html>

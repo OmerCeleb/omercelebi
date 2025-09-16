@@ -1,0 +1,257 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles - Skandinav Design Approach */
+@layer base {
+    /* Root Variables */
+    :root {
+        --scroll-bar-color: rgba(255, 255, 255, 0.2);
+        --scroll-bar-bg-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Reset & Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: theme('colors.neutral.800');
+        background-color: theme('colors.neutral.50');
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        line-height: 1.2;
+        color: theme('colors.neutral.900');
+    }
+
+    h1 {
+        @apply text-4xl md:text-5xl lg:text-6xl;
+    }
+
+    h2 {
+        @apply text-3xl md:text-4xl lg:text-5xl;
+    }
+
+    h3 {
+        @apply text-2xl md:text-3xl;
+    }
+
+    h4 {
+        @apply text-xl md:text-2xl;
+    }
+
+    p {
+        @apply text-base md:text-lg;
+        color: theme('colors.neutral.700');
+    }
+
+    /* Links */
+    a {
+        color: theme('colors.accent.600');
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+    a:hover {
+        color: theme('colors.accent.700');
+    }
+
+    /* Selection */
+    ::selection {
+        background-color: theme('colors.accent.500');
+        color: white;
+    }
+
+    ::-moz-selection {
+        background-color: theme('colors.accent.500');
+        color: white;
+    }
+}
+
+/* Custom Scrollbar */
+@layer components {
+    /* Webkit Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--scroll-bar-bg-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scroll-bar-color);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Firefox Scrollbar */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+    }
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+    /* Glass Effect */
+    .glass {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Text Gradient */
+    .text-gradient {
+        background: linear-gradient(135deg, theme('colors.accent.600'), theme('colors.primary.600'));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Smooth Animations */
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-out;
+    }
+
+    .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out;
+    }
+
+    /* Hover Effects */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Focus Styles */
+    .focus-outline {
+        @apply focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-opacity-50;
+    }
+
+    /* Button Base */
+    .btn-base {
+        @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 focus-outline;
+    }
+
+    /* Primary Button */
+    .btn-primary {
+        @apply btn-base bg-accent-600 text-white hover:bg-accent-700 active:bg-accent-800;
+    }
+
+    /* Secondary Button */
+    .btn-secondary {
+        @apply btn-base bg-neutral-200 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-400;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        @apply btn-base bg-transparent text-neutral-700 border border-neutral-300 hover:bg-neutral-100 hover:border-neutral-400;
+    }
+
+    /* Section Padding */
+    .section-padding {
+        @apply py-16 md:py-20 lg:py-24;
+    }
+
+    /* Container */
+    .container-custom {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Dark Mode Support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --scroll-bar-color: rgba(255, 255, 255, 0.3);
+        --scroll-bar-bg-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        color: black !important;
+        background: white !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}
