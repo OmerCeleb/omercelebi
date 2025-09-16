@@ -605,7 +605,7 @@ export const translations = {
                         'Responsiv design',
                         'Kontaktintegrering'
                     ],
-                    image: '/images/projects/konditori.png'
+                    image: '/images/projects/konditorilyran.png'
                 },
                 {
                     id: 'todo-app',
@@ -641,8 +641,7 @@ export const translations = {
                         'Användarvänligt gränssnitt',
                         'Prestandaoptimerad'
                     ],
-                    githubUrl: 'https://github.com/OmerCeleb/mobile-app',
-                    image: '/images/projects/mobileapp.png'
+                    image: '/images/projects/nospend.png'
                 },
                 {
                     id: 'alexum-projects',
@@ -661,7 +660,7 @@ export const translations = {
                         'Startup-miljöerfarenhet'
                     ],
                     isNDA: true,
-                    image: '/images/projects/startup.png'
+                    image: '/images/projects/Alexum.png'
                 },
                 {
                     id: 'speedyli-platform',
@@ -680,7 +679,7 @@ export const translations = {
                         'API-utveckling'
                     ],
                     demoUrl: 'https://www.speedyli.com',
-                    image: '/images/projects/speedyli.png'
+                    image: '/images/projects/Speedy.png'
                 }
             ] as ProjectItem[]
         },
