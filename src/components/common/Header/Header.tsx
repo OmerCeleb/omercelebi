@@ -66,19 +66,21 @@ const Header: React.FC = () => {
                 <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between h-16 md:h-20">
 
-                        {/* Logo/Brand */}
+                        {/* Logo/Brand with PNG */}
                         <motion.div
                             className="flex items-center space-x-3 cursor-pointer z-60"
                             onClick={() => handleNavClick('/')}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">Ö</span>
-                            </div>
-                            <div className="hidden sm:block">
-                                <h1 className="text-xl font-bold text-gray-900">Ömer</h1>
-                                <p className="text-xs text-gray-500">Fullstack Developer</p>
+                            {/* PNG Logo */}
+                            <div className="flex items-center space-x-3">
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Ömer Celebi Logo"
+                                    className="h-18 w-auto object-contain"
+                                />
+
                             </div>
                         </motion.div>
 
@@ -205,25 +207,20 @@ const Header: React.FC = () => {
                             exit={{ x: '100%' }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         >
-                            {/* Menu Header */}
+                            {/* Menu Header with PNG Logo */}
                             <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-red-50 to-red-100">
                                 <div className="flex items-center space-x-3 mb-4">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg">
-                                        <span className="text-white font-bold text-xl">Ö</span>
-                                    </div>
+                                    <img
+                                        src="/images/logo.png"
+                                        alt="Ömer Celebi Logo"
+                                        className="h-12 w-auto object-contain"
+                                    />
                                     <div>
                                         <h2 className="text-xl font-bold text-gray-900">Ömer Celebi</h2>
                                         <p className="text-sm text-red-600">Fullstack Developer</p>
                                     </div>
                                 </div>
 
-                                {/* Status */}
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-sm text-gray-600">
-                                        {language === 'en' ? 'Available for projects' : 'Tillgänglig för projekt'}
-                                    </span>
-                                </div>
                             </div>
 
                             {/* Navigation Items */}

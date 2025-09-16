@@ -114,15 +114,13 @@ const Footer: React.FC = () => {
 
                             {/* Brand Section */}
                             <motion.div variants={itemVariants} className="lg:col-span-1">
-                                {/* Logo */}
-                                <div className="flex items-center space-x-3 mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
-                                        <span className="text-white font-bold text-xl">Ö</span>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-semibold text-black">Ömer</h3>
-                                        <p className="text-neutral-500 text-sm">Fullstack Developer</p>
-                                    </div>
+                                {/* PNG Logo - Centered */}
+                                <div className="text-center mb-8">
+                                    <img
+                                        src="/images/logo.png"
+                                        alt="Ömer Celebi Logo"
+                                        className="h-32 w-auto object-contain mx-auto"
+                                    />
                                 </div>
 
                                 <p className="text-neutral-600 mb-6 leading-relaxed">
@@ -241,6 +239,21 @@ const Footer: React.FC = () => {
                                     </div>
                                     <span className="text-sm font-medium">{data.backToTop}</span>
                                 </motion.button>
+
+                                {/* Portfolio Link */}
+                                <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-lg border border-red-200">
+                                    <p className="text-sm text-red-800 mb-2 font-medium">
+                                        {language === 'en' ? 'Visit my full portfolio:' : 'Besök min kompletta portfölj:'}
+                                    </p>
+                                    <a
+                                        href="https://omercelebi.se"
+                                        className="text-red-600 hover:text-red-700 font-medium text-sm underline"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        omercelebi.se
+                                    </a>
+                                </div>
                             </motion.div>
                         </div>
                     </div>

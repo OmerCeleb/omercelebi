@@ -24,15 +24,15 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
     const seoData = {
         en: {
-            defaultTitle: 'Ömer Celebi - Frontend Developer | React & TypeScript Expert',
-            defaultDescription: 'Professional frontend developer specializing in React, TypeScript, and modern web technologies. Based in Stockholm, available worldwide for freelance projects.',
-            defaultKeywords: 'frontend developer, react developer, typescript, web development, stockholm, sweden, freelance, portfolio, ömer celebi',
+            defaultTitle: 'Ömer Celebi - Fullstack Developer',
+            defaultDescription: 'Solution-oriented fullstack developer with expertise in both frontend and backend technologies. Based in Stockholm, available worldwide for freelance projects.',
+            defaultKeywords: 'fullstack developer, react developer, typescript, web development, stockholm, sweden, freelance, portfolio, ömer celebi',
             siteName: 'Ömer Celebi Portfolio'
         },
         sv: {
-            defaultTitle: 'Ömer Celebi - Frontend Utvecklare | React & TypeScript Expert',
-            defaultDescription: 'Professionell frontend utvecklare specialiserad på React, TypeScript och moderna webbteknologier. Baserad i Stockholm, tillgänglig världen över för frilansuppdrag.',
-            defaultKeywords: 'frontend utvecklare, react utvecklare, typescript, webbutveckling, stockholm, sverige, frilans, portfölj, ömer celebi',
+            defaultTitle: 'Ömer Celebi - Fullstack Utvecklare',
+            defaultDescription: 'Lösningsorienterad fullstackutvecklare med expertis inom både frontend och backend teknologier. Baserad i Stockholm, tillgänglig världen över för frilansuppdrag.',
+            defaultKeywords: 'fullstack utvecklare, react utvecklare, typescript, webbutveckling, stockholm, sverige, frilans, portfölj, ömer celebi',
             siteName: 'Ömer Celebi Portfölj'
         }
     };
@@ -76,15 +76,26 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="format-detection" content="telephone=no" />
 
-            {/* Favicon and App Icons */}
+            {/* Custom Favicon and App Icons */}
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+            {/* PWA Icons */}
+            <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png" />
+            <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png" />
+
+            {/* Safari Pinned Tab */}
+            <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#dc2626" />
 
             {/* Theme Color */}
             <meta name="theme-color" content="#dc2626" />
             <meta name="msapplication-TileColor" content="#dc2626" />
+            <meta name="msapplication-TileImage" content="/images/mstile-150x150.png" />
+
+            {/* Manifest */}
+            <link rel="manifest" href="/site.webmanifest" />
 
             {/* Preconnect for Performance */}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -96,19 +107,20 @@ const SEOHead: React.FC<SEOHeadProps> = ({
                     "@context": "https://schema.org",
                     "@type": "Person",
                     "name": "Ömer Celebi",
-                    "jobTitle": "Frontend Developer",
+                    "jobTitle": "Fullstack Developer",
                     "url": "https://omercelebi.se",
                     "sameAs": [
                         "https://github.com/OmerCeleb",
-                        "https://linkedin.com/in/omercelebii/"
+                        "https://linkedin.com/in/omercelebii"
                     ],
                     "address": {
                         "@type": "PostalAddress",
                         "addressLocality": "Stockholm",
                         "addressCountry": "Sweden"
                     },
-                    "knowsAbout": ["React", "TypeScript", "JavaScript", "Frontend Development", "Web Development"],
-                    "description": pageDescription
+                    "knowsAbout": ["React", "TypeScript", "JavaScript", "Java", "Spring Boot", "Node.js", "Fullstack Development", "Web Development"],
+                    "description": pageDescription,
+                    "image": `https://omercelebi.se${image}`
                 })}
             </script>
         </Helmet>

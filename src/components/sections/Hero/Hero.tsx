@@ -88,10 +88,6 @@ const Hero: React.FC = () => {
 
                             {/* Clean Status Badge */}
                             <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
-                <span className="inline-flex items-center gap-2 px-6 py-2 border border-neutral-300 rounded-full text-black text-sm font-medium">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    {data.availableForProjects}
-                </span>
                             </motion.div>
 
                             {/* Main Typography */}
