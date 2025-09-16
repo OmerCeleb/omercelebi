@@ -623,7 +623,7 @@ export const translations = {
                         'Lokal lagring',
                         'Framstegsföljning'
                     ],
-                    githubUrl: 'https://github.com/OmerCeleb/todo-app',
+                    githubUrl: 'https://github.com/OmerCeleb/todo-app-frontend',
                     image: '/images/projects/todoapp.png'
                 },
                 {

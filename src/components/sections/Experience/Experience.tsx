@@ -61,109 +61,6 @@ const Experience: React.FC = () => {
             {/* Overlay for readability */}
             <div className="absolute inset-0 bg-white/85"></div>
 
-            {/* Custom Smooth Cloud Background */}
-            <div className="absolute inset-0">
-                {/* Animated Clouds */}
-                <div className="absolute inset-0">
-                    {/* Cloud 1 - Different animation than About */}
-                    <motion.div
-                        className="absolute top-32 -right-32 w-112 h-36 opacity-22"
-                        animate={{
-                            x: [0, -120, 0],
-                            y: [0, 25, 0],
-                        }}
-                        transition={{
-                            duration: 24,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(180, 200, 230, 0.5) 0%, rgba(180, 200, 230, 0.15) 70%, transparent 100%)',
-                            filter: 'blur(1.5px)'
-                        }}
-                    />
-
-                    {/* Cloud 2 */}
-                    <motion.div
-                        className="absolute top-80 left-0 w-88 h-30 opacity-18"
-                        animate={{
-                            x: [0, 90, 0],
-                            y: [0, -15, 0],
-                        }}
-                        transition={{
-                            duration: 28,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(200, 220, 250, 0.4) 0%, rgba(200, 220, 250, 0.1) 70%, transparent 100%)',
-                            filter: 'blur(1px)'
-                        }}
-                    />
-
-                    {/* Cloud 3 */}
-                    <motion.div
-                        className="absolute bottom-32 -right-16 w-76 h-26 opacity-20"
-                        animate={{
-                            x: [0, -70, 0],
-                            y: [0, 20, 0],
-                        }}
-                        transition={{
-                            duration: 26,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(160, 180, 210, 0.6) 0%, rgba(160, 180, 210, 0.2) 70%, transparent 100%)',
-                            filter: 'blur(1.8px)'
-                        }}
-                    />
-
-                    {/* Cloud 4 */}
-                    <motion.div
-                        className="absolute top-1/3 left-16 w-68 h-22 opacity-16"
-                        animate={{
-                            x: [0, 50, 0],
-                            y: [0, -18, 0],
-                        }}
-                        transition={{
-                            duration: 30,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(210, 225, 245, 0.5) 0%, rgba(210, 225, 245, 0.12) 70%, transparent 100%)',
-                            filter: 'blur(1.3px)'
-                        }}
-                    />
-
-                    {/* Floating particles */}
-                    {[...Array(12)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-6 h-6 rounded-full opacity-8"
-                            style={{
-                                top: `${Math.random() * 85 + 10}%`,
-                                left: `${Math.random() * 85 + 10}%`,
-                                background: 'radial-gradient(circle, rgba(170, 190, 230, 0.4) 0%, rgba(170, 190, 230, 0.1) 70%, transparent 100%)',
-                            }}
-                            animate={{
-                                y: [0, -25, 0],
-                                x: [0, 15, 0],
-                                opacity: [0.08, 0.25, 0.08],
-                                scale: [1, 1.2, 1]
-                            }}
-                            transition={{
-                                duration: 10 + Math.random() * 8,
-                                repeat: Infinity,
-                                delay: Math.random() * 4,
-                                ease: "easeInOut"
-                            }}
-                        />
-                    ))}
-                </div>
-            </div>
-
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     className="max-w-6xl mx-auto"
@@ -202,7 +99,7 @@ const Experience: React.FC = () => {
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: index * 0.2 }}
+                                        transition={{ delay: 0.8 + index * 0.2 }}
                                     >
                                         {/* Timeline Node */}
                                         <motion.div

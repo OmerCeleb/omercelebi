@@ -47,106 +47,17 @@ const About: React.FC = () => {
         <section className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-gray-50">
 
             {/* Custom Smooth Cloud Background */}
-            <div className="absolute inset-0">
-                {/* Animated Clouds */}
-                <div className="absolute inset-0">
-                    {/* Cloud 1 */}
-                    <motion.div
-                        className="absolute top-20 -left-20 w-96 h-32 opacity-20"
-                        animate={{
-                            x: [0, 100, 0],
-                            y: [0, -20, 0],
-                        }}
-                        transition={{
-                            duration: 20,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(200, 220, 240, 0.6) 0%, rgba(200, 220, 240, 0.2) 70%, transparent 100%)',
-                            filter: 'blur(1px)'
-                        }}
-                    />
-
-                    {/* Cloud 2 */}
-                    <motion.div
-                        className="absolute top-60 -right-20 w-80 h-28 opacity-15"
-                        animate={{
-                            x: [0, -80, 0],
-                            y: [0, 15, 0],
-                        }}
-                        transition={{
-                            duration: 25,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(180, 200, 230, 0.5) 0%, rgba(180, 200, 230, 0.1) 70%, transparent 100%)',
-                            filter: 'blur(1.5px)'
-                        }}
-                    />
-
-                    {/* Cloud 3 */}
-                    <motion.div
-                        className="absolute bottom-40 left-10 w-72 h-24 opacity-25"
-                        animate={{
-                            x: [0, 60, 0],
-                            y: [0, -10, 0],
-                        }}
-                        transition={{
-                            duration: 18,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(220, 230, 250, 0.4) 0%, rgba(220, 230, 250, 0.1) 70%, transparent 100%)',
-                            filter: 'blur(0.8px)'
-                        }}
-                    />
-
-                    {/* Cloud 4 */}
-                    <motion.div
-                        className="absolute top-1/2 right-20 w-64 h-20 opacity-18"
-                        animate={{
-                            x: [0, -40, 0],
-                            y: [0, 25, 0],
-                        }}
-                        transition={{
-                            duration: 22,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{
-                            background: 'radial-gradient(ellipse, rgba(190, 210, 240, 0.5) 0%, rgba(190, 210, 240, 0.15) 70%, transparent 100%)',
-                            filter: 'blur(1.2px)'
-                        }}
-                    />
-
-                    {/* Small floating elements */}
-                    {[...Array(8)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-8 h-8 rounded-full opacity-10"
-                            style={{
-                                top: `${Math.random() * 80 + 10}%`,
-                                left: `${Math.random() * 80 + 10}%`,
-                                background: 'radial-gradient(circle, rgba(160, 180, 220, 0.6) 0%, rgba(160, 180, 220, 0.2) 70%, transparent 100%)',
-                            }}
-                            animate={{
-                                y: [0, -30, 0],
-                                x: [0, 20, 0],
-                                opacity: [0.1, 0.3, 0.1]
-                            }}
-                            transition={{
-                                duration: 8 + Math.random() * 6,
-                                repeat: Infinity,
-                                delay: Math.random() * 5,
-                                ease: "easeInOut"
-                            }}
-                        />
-                    ))}
-                </div>
+            <div className="absolute inset-0"
+                 style={{
+                     backgroundImage: `url("/images/OmMig.png")`,
+                     backgroundSize: "cover",
+                     backgroundPosition: "center",
+                     backgroundRepeat: "no-repeat"
+                 }}
+            >
             </div>
+            <div className="absolute inset-0 bg-white/85"></div>
+
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
