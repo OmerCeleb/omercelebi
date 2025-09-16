@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { translations } from '../../../data/translations';
 
@@ -22,23 +22,32 @@ const Contact: React.FC = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    // METHOD 1: Direct mailto approach (Simple but limited)
+    const handleMailtoSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setFormStatus('sending');
 
-        // Simulate form submission (replace with actual implementation)
-        setTimeout(() => {
-            if (Math.random() > 0.1) { // 90% success rate for demo
-                setFormStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
-            } else {
-                setFormStatus('error');
-            }
+        const subject = encodeURIComponent(formData.subject || `Message from ${formData.name}`);
+        const body = encodeURIComponent(
+            `Name: ${formData.name}\n` +
+            `Email: ${formData.email}\n` +
+            `Subject: ${formData.subject}\n\n` +
+            `Message:\n${formData.message}`
+        );
 
-            // Reset status after 3 seconds
-            setTimeout(() => setFormStatus('idle'), 3000);
-        }, 2000);
+        const mailtoUrl = `mailto:omer534@outlook.com?subject=${subject}&body=${body}`;
+        window.open(mailtoUrl, '_blank');
+
+        // Set success status
+        setFormStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        // Reset status after 3 seconds
+        setTimeout(() => setFormStatus('idle'), 3000);
     };
+
+
+    // Choose which submit handler to use
+    const handleSubmit = handleMailtoSubmit; // Change this to your preferred method
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -225,6 +234,7 @@ const Contact: React.FC = () => {
                                             <span>{t.form.error}</span>
                                         </motion.div>
                                     )}
+
                                 </form>
                             </div>
                         </motion.div>
@@ -243,7 +253,12 @@ const Contact: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-gray-300 text-sm">{t.contact.email}</p>
-                                            <p className="text-white">{t.info.email}</p>
+                                            <a
+                                                href="omer534@outlook.com"
+                                                className="text-white hover:text-red-400 transition-colors"
+                                            >
+                                                {t.info.email}
+                                            </a>
                                         </div>
                                     </div>
 
@@ -275,7 +290,7 @@ const Contact: React.FC = () => {
 
                                 <div className="flex space-x-4">
                                     <motion.a
-                                        href="https://github.com/yourusername"
+                                        href="https://github.com/OmerCeleb"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white"
@@ -287,7 +302,7 @@ const Contact: React.FC = () => {
                                     </motion.a>
 
                                     <motion.a
-                                        href="https://linkedin.com/in/yourprofile"
+                                        href="https://linkedin.com/in/omercelebii/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white"
@@ -299,6 +314,7 @@ const Contact: React.FC = () => {
                                     </motion.a>
                                 </div>
                             </div>
+
                         </motion.div>
                     </div>
 
@@ -311,13 +327,14 @@ const Contact: React.FC = () => {
                             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
                                 {t.cta.description}
                             </p>
-                            <motion.button
-                                className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+                            <motion.a
+                                href="mailto:omer534@outlook.com?subject=Let's Work Together&body=Hi Ömer,%0D%0A%0D%0AI'd like to discuss a project with you.%0D%0A%0D%0A"
+                                className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 {t.cta.button}
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
 

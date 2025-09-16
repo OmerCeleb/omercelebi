@@ -142,13 +142,6 @@ const Hero: React.FC = () => {
                                         {data.cta.aboutMe}
                                     </motion.button>
 
-                                    <motion.button
-                                        className="group px-8 py-4 border border-black text-black font-medium tracking-wide transition-all duration-300 hover:bg-black hover:text-white"
-                                        whileHover={{ y: -2 }}
-                                        whileTap={{ scale: 0.98 }}
-                                    >
-                                        {data.cta.downloadCV}
-                                    </motion.button>
                                 </div>
                             </motion.div>
 
@@ -156,8 +149,8 @@ const Hero: React.FC = () => {
                             <motion.div variants={itemVariants} className="lg:hidden mb-16">
                                 <div className="flex justify-center items-center space-x-8 text-center">
                                     {[
-                                        { number: '02', label: data.stats.years },
-                                        { number: '05', label: data.stats.projects },
+                                        { number: '3+', label: data.stats.years },
+                                        { number: '5', label: data.stats.projects },
                                         { number: '10', label: data.stats.techStack }
                                     ].map((stat, index) => (
                                         <motion.div
@@ -180,17 +173,18 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
 
+
                     {/* Clean Tech List - Full Width */}
                     <motion.div variants={itemVariants} className="mt-20 lg:mt-32">
                         <div className="max-w-4xl mx-auto text-center">
                             <div className="text-xs text-neutral-400 mb-8 tracking-widest uppercase">
                                 {data.technologies}
                             </div>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-black">
-                                {['React', 'TypeScript', 'Node.js', 'JavaScript', 'Tailwind CSS', 'Git', 'Figma', 'SQL'].map((tech, index) => (
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-white">
+                                {['React', 'TypeScript', 'Node.js', 'JavaScript', 'Java', 'Spring Boot', 'PostgreSQL', 'Git'].map((tech, index) => (
                                     <motion.div
                                         key={tech}
-                                        className="py-3 text-center border-b border-neutral-200 hover:border-red-300 transition-colors"
+                                        className="py-3 text-center border-b border-white/20 hover:border-red-300 transition-colors"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 1.8 + (index * 0.1) }}
@@ -201,7 +195,6 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
                     </motion.div>
-
                     {/* Scandinavian Scroll Indicator */}
                     <motion.div
                         variants={itemVariants}

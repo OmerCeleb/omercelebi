@@ -58,22 +58,22 @@ export const translations = {
             availableForProjects: 'Available for Projects',
             hello: 'Hello.',
             titles: {
-                frontendDeveloper: 'Frontend Developer',
-                reactDeveloper: 'React Developer',
-                typescriptEnthusiast: 'TypeScript Enthusiast',
-                digitalCreator: 'Digital Creator'
+                frontendDeveloper: 'Fullstack Developer',
+                reactDeveloper: 'Frontend Developer',
+                typescriptEnthusiast: 'Backend Developer',
+                digitalCreator: 'Problem Solver'
             },
             imA: "I'm a",
-            description: 'Crafting digital experiences with precision and passion.',
+            description: 'Solution-oriented fullstack developer with experience in both frontend and backend technologies.',
             basedIn: 'Based in Stockholm.',
             cta: {
                 aboutMe: 'About Me',
                 downloadCV: 'Download CV'
             },
             stats: {
-                years: 'Years',
-                projects: 'Projects',
-                techStack: 'Tech Stack'
+                years: 'Years Experience',
+                projects: 'Live Projects',
+                techStack: 'Technologies'
             },
             technologies: 'Technologies',
             sideText: {
@@ -83,22 +83,22 @@ export const translations = {
         },
         about: {
             title: 'About Me',
-            introduction: 'From backend foundations to frontend artistry',
+            introduction: 'From Java foundations to modern web development',
             story: {
                 bootcamp: {
                     title: 'The Beginning',
-                    period: '2021',
-                    content: 'My development journey began with a comprehensive bootcamp where I learned the fundamentals of programming with Java and SQL. This solid foundation taught me the importance of clean code and systematic thinking.'
+                    period: '2022',
+                    content: 'My development journey began with Java & Spring Boot bootcamp where I built a comprehensive rent-a-car management system. This solid foundation taught me the importance of clean code and systematic thinking.'
                 } as StoryItem,
-                startup: {
-                    title: 'Startup Life',
-                    period: '2023',
-                    content: '8 months at Alexum AB was transformative. Working on three different projects, I discovered my passion for frontend development. React and TypeScript became my tools of choice for crafting user experiences.'
+                speedyli: {
+                    title: 'International Experience',
+                    period: '2022-2023',
+                    content: '7 months at Speedyli (USA) was transformative. Working on an international platform with Spring Boot, Hibernate, Java, and PostgreSQL expanded my backend expertise and teamwork skills.'
                 } as StoryItem,
                 current: {
                     title: 'Today',
                     period: 'Present',
-                    content: 'While working at PostNord, I continue growing through freelance projects. From construction company websites in Turkey to konditori sites in Sweden - every project teaches me something new.'
+                    content: 'At Alexum AB, I evolved into fullstack development, mastering React and JavaScript. While working at PostNord for stability, I continue growing through freelance projects across Sweden and Turkey.'
                 } as StoryItem
             },
             approach: {
@@ -111,23 +111,23 @@ export const translations = {
                     },
                     {
                         icon: 'Heart',
-                        title: 'User-Centered',
-                        description: 'Every interface should feel intuitive and delightful to use'
+                        title: 'Team Player',
+                        description: 'Thriving in collaborative environments while contributing innovative ideas'
                     },
                     {
                         icon: 'Coffee',
-                        title: 'Continuous Learning',
-                        description: 'Staying current with modern technologies and best practices'
+                        title: 'AI-Enhanced',
+                        description: 'Leveraging modern tools and AI technologies for efficient development'
                     },
                     {
                         icon: 'Users',
-                        title: 'Collaborative',
-                        description: 'Best solutions emerge from teamwork and open communication'
+                        title: 'Quality First',
+                        description: 'Always responsible for testing and quality assurance in every project'
                     }
                 ] as ApproachItem[]
             },
-            philosophy: 'What drives me is the perfect blend of technical precision and creative expression that frontend development offers. Every line of code is an opportunity to craft something beautiful and functional.',
-            currentFocus: 'Currently expanding my expertise in React ecosystem, TypeScript patterns, and modern web performance optimization.',
+            philosophy: 'I believe in combining traditional development skills with modern AI tools to create efficient, high-quality solutions. Every project is an opportunity to learn and innovate.',
+            currentFocus: 'Currently working on expanding fullstack capabilities while freelancing and building a diverse portfolio of Swedish and international projects.',
             location: 'Based in Stockholm, Sweden'
         },
         experience: {
@@ -137,17 +137,18 @@ export const translations = {
             experiences: [
                 {
                     id: 'postnord',
-                    company: 'PostNord',
+                    company: 'PostNord Sverige',
                     position: 'Terminal Worker',
-                    period: 'Sep 2023 - Present',
-                    duration: '6+ months',
+                    period: 'Sep 2018 - Present',
+                    duration: '7+ years',
                     location: 'Stockholm, Sweden',
                     type: 'Current Role',
-                    description: 'Working in logistics while actively developing freelance web projects. This role provides stability while I grow my development skills and build my portfolio.',
+                    description: 'Working in high-tempo logistics environment with strong team collaboration. Provides financial stability while pursuing freelance web development projects on the side.',
                     highlights: [
-                        'Managing terminal operations',
-                        'Developing freelance projects in spare time',
-                        'Building portfolio with real client work'
+                        'High-tempo logistics operations',
+                        'Strong team collaboration skills',
+                        'Parallel freelance web development',
+                        'Time management and multitasking'
                     ],
                     technologies: [],
                     icon: 'Truck'
@@ -155,44 +156,45 @@ export const translations = {
                 {
                     id: 'alexum',
                     company: 'Alexum AB',
-                    position: 'Frontend Developer',
-                    period: 'Jan 2023 - Aug 2023',
+                    position: 'Fullstack Developer',
+                    period: 'Jan 2025 - Aug 2025',
                     duration: '8 months',
                     location: 'Stockholm, Sweden',
                     type: 'Startup Experience',
-                    description: 'Startup environment that shaped my development career. Worked on three different projects as part of a collaborative team, focusing on frontend development with React.',
+                    description: 'Startup environment focused primarily on frontend development with React and JavaScript, while also contributing to backend Node.js tasks. Participated in three projects with a small development team.',
                     highlights: [
-                        'Worked on 3 diverse projects',
-                        'Collaborative team environment',
-                        'Frontend focus with React & TypeScript',
-                        'Contributing to Node.js backend tasks'
+                        'Frontend focus with React & JavaScript',
+                        'Backend development with Node.js',
+                        'Participated in 3 diverse projects',
+                        'Small team collaboration',
+                        'Problem-solving in startup environment'
                     ],
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript', 'HTML', 'CSS'],
+                    technologies: ['React', 'JavaScript', 'Node.js', 'HTML', 'CSS', 'Git'],
                     icon: 'Building'
                 },
                 {
-                    id: 'bootcamp',
-                    company: 'Bootcamp Program',
-                    position: 'Full-Stack Student',
-                    period: '2021',
-                    duration: '1 year',
-                    location: 'Turkey',
-                    type: 'Foundation',
-                    description: 'Intensive full-stack development program that laid the foundation for my programming career. Built a comprehensive Rent-a-Car management system.',
+                    id: 'speedyli',
+                    company: 'Speedyli',
+                    position: 'Fullstack Developer',
+                    period: 'Sep 2022 - Mar 2023',
+                    duration: '7 months',
+                    location: 'USA (Remote)',
+                    type: 'International',
+                    description: 'Developed platform www.speedyli.com in an international team environment. Gained extensive backend experience with enterprise-level technologies.',
                     highlights: [
-                        'Comprehensive Rent-a-Car project',
-                        'Backend development with Java',
-                        'Database design and management',
-                        'Full-stack understanding'
+                        'International team collaboration',
+                        'Enterprise-level platform development',
+                        'Full development lifecycle experience',
+                        'Remote work proficiency'
                     ],
-                    technologies: ['Java', 'SQL', 'MySQL', 'REST APIs', 'Git'],
+                    technologies: ['Spring Boot', 'Hibernate', 'Java', 'PostgreSQL', 'Postman', 'GitHub'],
                     icon: 'Code'
                 }
             ] as ExperienceItem[]
         },
         projects: {
             title: 'Projects',
-            subtitle: 'Building digital experiences',
+            subtitle: 'Building digital solutions',
             filters: {
                 all: 'All Projects',
                 live: 'Live Projects',
@@ -213,11 +215,12 @@ export const translations = {
                         'Responsive design',
                         'Smooth animations',
                         'Modern UI/UX',
-                        'Performance optimized'
+                        'Performance optimized',
+                        'SEO ready'
                     ],
-                    demoUrl: '#',
-                    githubUrl: '#',
-                    image: '/api/placeholder/600/400'
+                    demoUrl: 'https://omercelebi.se',
+                    githubUrl: 'https://github.com/OmerCeleb/omercelebi',
+                    image: '/images/projects/omercelebi.png'
                 },
                 {
                     id: 'construction-site',
@@ -232,79 +235,103 @@ export const translations = {
                         'Professional service showcase',
                         'Contact and quote forms',
                         'Mobile-first design',
-                        'SEO optimized'
+                        'SEO optimized',
+                        'Turkish language support'
                     ],
                     demoUrl: 'https://kocaseyithafriyat.com/',
-                    image: '/api/placeholder/600/400'
+                    image: '/images/projects/kocaseyithafriyat.png'
                 },
                 {
                     id: 'konditori-sites',
-                    title: 'Swedish Café Websites',
-                    description: 'Multiple website projects for cafés and konditori businesses in Sweden. Focus on elegant design and local market appeal.',
-                    longDescription: 'Series of websites for Swedish hospitality businesses, featuring menu displays, location information, and booking systems.',
+                    title: 'Konditori & Café Websites',
+                    description: 'Multiple elegant websites for Swedish hospitality businesses. Features menu displays, location information, and Swedish market appeal.',
+                    longDescription: 'Beautiful websites for Swedish hospitality businesses, featuring menu displays, location information, and booking systems tailored for the Swedish market.',
                     category: 'development',
-                    status: 'In Progress',
-                    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'SEO'],
+                    status: 'Launching Soon',
+                    technologies: ['React', 'TypeScript', 'CSS', 'SEO'],
                     features: [
                         'Menu display systems',
                         'Location and hours',
                         'Swedish market focus',
                         'Local SEO optimization',
-                        'Booking integration'
+                        'Responsive design',
+                        'Contact integration'
                     ],
-                    image: '/api/placeholder/600/400'
+                    image: '/images/projects/konditorilyran.png'
                 },
                 {
                     id: 'todo-app',
-                    title: 'Full-Stack Todo Application',
-                    description: 'Modern task management application with React frontend and Node.js backend. Features user authentication and real-time updates.',
-                    longDescription: 'Comprehensive todo application demonstrating full-stack development skills with modern technologies and best practices.',
+                    title: 'Advanced Todo Application',
+                    description: 'Modern task management application with React frontend. Features intuitive task organization, categories, and responsive design.',
+                    longDescription: 'Comprehensive todo application demonstrating fullstack development skills. Frontend completed with React, backend currently under development with Node.js.',
                     category: 'development',
                     status: 'Frontend Complete',
-                    technologies: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'JWT'],
+                    technologies: ['React', 'Node.js', 'CSS', 'JavaScript'],
                     features: [
-                        'User authentication',
-                        'Task management',
-                        'Real-time updates',
+                        'Task management system',
+                        'Category organization',
                         'Responsive design',
-                        'REST API integration'
+                        'Modern UI/UX',
+                        'Local storage',
+                        'Progress tracking'
                     ],
-                    githubUrl: '#',
-                    image: '/api/placeholder/600/400'
+                    githubUrl: 'https://github.com/OmerCeleb/todo-app-frontend',
+                    image: '/images/projects/todoapp.png'
                 },
                 {
                     id: 'mobile-app',
                     title: 'React Native Mobile App',
-                    description: 'Cross-platform mobile application with completed frontend design. Backend development in progress using Node.js.',
+                    description: 'Cross-platform mobile application built with React Native. Frontend design completed, backend currently under development.',
                     longDescription: 'Mobile application showcasing React Native skills with focus on user experience and modern mobile UI patterns.',
                     category: 'development',
                     status: 'Frontend Complete',
-                    technologies: ['React Native', 'TypeScript', 'Node.js', 'Mobile UI/UX'],
+                    technologies: ['React Native', 'JavaScript', 'Mobile UI/UX'],
                     features: [
                         'Cross-platform compatibility',
-                        'Modern UI components',
-                        'Navigation system',
-                        'State management',
-                        'API integration ready'
+                        'Modern mobile UI',
+                        'Responsive design',
+                        'User-friendly interface',
+                        'Performance optimized'
                     ],
-                    image: '/api/placeholder/300/600'
+                    image: '/images/projects/nospend.png'
                 },
                 {
                     id: 'alexum-projects',
                     title: 'Startup Projects',
                     description: 'Three commercial projects developed at Alexum AB including company website, SMS portal, and order management system.',
-                    longDescription: 'Commercial projects under NDA including web applications, portal systems, and business automation tools.',
+                    longDescription: 'Commercial projects under NDA including web applications, portal systems, and business automation tools. Gained valuable experience in startup environment and team collaboration.',
                     category: 'commercial',
                     status: 'Completed',
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript'],
+                    technologies: ['React', 'JavaScript', 'Node.js', 'CSS'],
                     features: [
                         'Company website development',
                         'SMS communication portal',
                         'Order management system',
                         'Team collaboration',
-                        'Commercial grade applications'
+                        'Commercial grade applications',
+                        'Startup environment experience'
                     ],
-                    isNDA: true
+                    isNDA: true,
+                    image: '/images/projects/Alexum.png'
+                },
+                {
+                    id: 'speedyli-platform',
+                    title: 'Speedyli Platform',
+                    description: 'International platform development with enterprise-level backend technologies. Worked with Spring Boot, Hibernate, and PostgreSQL.',
+                    longDescription: 'Enterprise-level platform development in international team environment. Gained extensive experience with Java ecosystem and database management.',
+                    category: 'commercial',
+                    status: 'Completed',
+                    technologies: ['Spring Boot', 'Hibernate', 'Java', 'PostgreSQL', 'Postman'],
+                    features: [
+                        'Enterprise platform architecture',
+                        'Database design and optimization',
+                        'International team collaboration',
+                        'Full development lifecycle',
+                        'Performance optimization',
+                        'API development'
+                    ],
+                    demoUrl: 'https://www.speedyli.com',
+                    image: '/images/projects/Speedy.png'
                 }
             ] as ProjectItem[]
         },
@@ -328,7 +355,7 @@ export const translations = {
                 availability: 'Availability'
             },
             info: {
-                email: 'your.email@example.com',
+                email: 'omer534@outlook.com',
                 location: 'Stockholm, Sweden',
                 availability: 'Available for freelance projects'
             },
@@ -345,7 +372,7 @@ export const translations = {
             }
         },
         footer: {
-            description: 'Passionate frontend developer crafting digital experiences with modern technologies. Based in Stockholm, available worldwide.',
+            description: 'Solution-oriented fullstack developer with expertise in both frontend and backend technologies. Based in Stockholm, available worldwide.',
             status: 'Available for freelance projects',
             location: 'Stockholm, Sweden',
             quickLinks: {
@@ -379,22 +406,22 @@ export const translations = {
             availableForProjects: 'Tillgänglig för Projekt',
             hello: 'Hej.',
             titles: {
-                frontendDeveloper: 'Frontend Utvecklare',
-                reactDeveloper: 'React Utvecklare',
-                typescriptEnthusiast: 'TypeScript Entusiast',
-                digitalCreator: 'Digital Skapare'
+                frontendDeveloper: 'Fullstack Utvecklare',
+                reactDeveloper: 'Frontend Utvecklare',
+                typescriptEnthusiast: 'Backend Utvecklare',
+                digitalCreator: 'Problemlösare'
             },
             imA: 'Jag är en',
-            description: 'Skapar digitala upplevelser med precision och passion.',
+            description: 'Lösningsorienterad fullstackutvecklare med erfarenhet av både frontend och backend teknologier.',
             basedIn: 'Baserad i Stockholm.',
             cta: {
                 aboutMe: 'Om Mig',
                 downloadCV: 'Ladda ner CV'
             },
             stats: {
-                years: 'År',
-                projects: 'Projekt',
-                techStack: 'Teknik Stack'
+                years: 'Års Erfarenhet',
+                projects: 'Live Projekt',
+                techStack: 'Teknologier'
             },
             technologies: 'Teknologier',
             sideText: {
@@ -404,22 +431,22 @@ export const translations = {
         },
         about: {
             title: 'Om Mig',
-            introduction: 'Från backend-grund till frontend-konst',
+            introduction: 'Från Java-grund till modern webbutveckling',
             story: {
                 bootcamp: {
                     title: 'Början',
-                    period: '2021',
-                    content: 'Min utvecklingsresa började med en omfattande bootcamp där jag lärde mig grunderna i programmering med Java och SQL. Denna solida grund lärde mig vikten av ren kod och systematiskt tänkande.'
+                    period: '2022',
+                    content: 'Min utvecklingsresa började med Java & Spring Boot bootcamp där jag byggde ett omfattande biluthyrningshanteringssystem. Denna solida grund lärde mig vikten av ren kod och systematiskt tänkande.'
                 } as StoryItem,
-                startup: {
-                    title: 'Startup-livet',
-                    period: '2023',
-                    content: '8 månader på Alexum AB var förändrande. Genom att arbeta med tre olika projekt upptäckte jag min passion för frontend-utveckling. React och TypeScript blev mina verktyg för att skapa användarupplevelser.'
+                speedyli: {
+                    title: 'Internationell Erfarenhet',
+                    period: '2022-2023',
+                    content: '7 månader på Speedyli (USA) var förändrande. Att arbeta med en internationell plattform med Spring Boot, Hibernate, Java och PostgreSQL utökade min backend-expertis och teamarbetsfärdigheter.'
                 } as StoryItem,
                 current: {
                     title: 'Idag',
                     period: 'Nuvarande',
-                    content: 'Medan jag arbetar på PostNord fortsätter jag växa genom frilansuppdrag. Från byggföretags webbplatser i Turkiet till konditori-sajter i Sverige - varje projekt lär mig något nytt.'
+                    content: 'På Alexum AB utvecklades jag till fullstack-utveckling och bemästrade React och JavaScript. Medan jag arbetar på PostNord för stabilitet fortsätter jag växa genom frilansuppdrag över Sverige och Turkiet.'
                 } as StoryItem
             },
             approach: {
@@ -432,23 +459,23 @@ export const translations = {
                     },
                     {
                         icon: 'Heart',
-                        title: 'Användarcentrerad',
-                        description: 'Varje gränssnitt ska kännas intuitivt och trevligt att använda'
+                        title: 'Teamspelare',
+                        description: 'Trivs i kollaborativa miljöer samtidigt som jag bidrar med innovativa idéer'
                     },
                     {
                         icon: 'Coffee',
-                        title: 'Kontinuerligt Lärande',
-                        description: 'Hålla mig uppdaterad med moderna teknologier och bästa praxis'
+                        title: 'AI-förstärkt',
+                        description: 'Använder moderna verktyg och AI-teknologier för effektiv utveckling'
                     },
                     {
                         icon: 'Users',
-                        title: 'Samarbetsinriktad',
-                        description: 'Bästa lösningarna uppstår från teamarbete och öppen kommunikation'
+                        title: 'Kvalitet Först',
+                        description: 'Alltid ansvarig för testning och kvalitetssäkring i varje projekt'
                     }
                 ] as ApproachItem[]
             },
-            philosophy: 'Det som driver mig är den perfekta blandningen av teknisk precision och kreativt uttryck som frontend-utveckling erbjuder. Varje kodrad är en möjlighet att skapa något vackert och funktionellt.',
-            currentFocus: 'För närvarande utökar jag min expertis inom React-ekosystemet, TypeScript-mönster och modern webb-prestandaoptimering.',
+            philosophy: 'Jag tror på att kombinera traditionella utvecklingsfärdigheter med moderna AI-verktyg för att skapa effektiva, högkvalitativa lösningar. Varje projekt är en möjlighet att lära och innovera.',
+            currentFocus: 'Arbetar för närvarande med att utöka fullstack-kapabiliteter medan jag frilansbygger och bygger en mångsidig portfölj av svenska och internationella projekt.',
             location: 'Baserad i Stockholm, Sverige'
         },
         experience: {
@@ -458,17 +485,18 @@ export const translations = {
             experiences: [
                 {
                     id: 'postnord',
-                    company: 'PostNord',
+                    company: 'PostNord Sverige',
                     position: 'Terminalarbetare',
-                    period: 'Sep 2023 - Nuvarande',
-                    duration: '6+ månader',
+                    period: 'Sep 2018 - Nuvarande',
+                    duration: '7+ år',
                     location: 'Stockholm, Sverige',
                     type: 'Nuvarande Roll',
-                    description: 'Arbetar inom logistik medan jag aktivt utvecklar frilans webbprojekt. Denna roll ger stabilitet medan jag utvecklar mina utvecklingsfärdigheter och bygger min portfölj.',
+                    description: 'Arbetar i högtempo logistikmiljö med starkt teamsamarbete. Ger ekonomisk stabilitet medan jag bedriver freelance webbutvecklingsprojekt vid sidan av.',
                     highlights: [
-                        'Hanterar terminaloperationer',
-                        'Utvecklar frilansprojekt på fritiden',
-                        'Bygger portfölj med riktiga kundprojekt'
+                        'Högtempo logistikoperationer',
+                        'Starka teamsamarbetsfärdigheter',
+                        'Parallell freelance webbutveckling',
+                        'Tidshantering och multitasking'
                     ],
                     technologies: [],
                     icon: 'Truck'
@@ -476,44 +504,45 @@ export const translations = {
                 {
                     id: 'alexum',
                     company: 'Alexum AB',
-                    position: 'Frontend Utvecklare',
-                    period: 'Jan 2023 - Aug 2023',
+                    position: 'Fullstack Utvecklare',
+                    period: 'Jan 2025 - Aug 2025',
                     duration: '8 månader',
                     location: 'Stockholm, Sverige',
                     type: 'Startup Erfarenhet',
-                    description: 'Startup-miljö som formade min utvecklingskarriär. Arbetade med tre olika projekt som del av ett kollaborativt team, fokuserade på frontend-utveckling med React.',
+                    description: 'Startup-miljö fokuserad främst på frontend-utveckling med React och JavaScript, samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre projekt med ett litet utvecklingsteam.',
                     highlights: [
-                        'Arbetade med 3 olika projekt',
-                        'Kollaborativ teammiljö',
-                        'Frontend-fokus med React & TypeScript',
-                        'Bidrog till Node.js backend-uppgifter'
+                        'Frontend-fokus med React & JavaScript',
+                        'Backend-utveckling med Node.js',
+                        'Deltog i 3 olika projekt',
+                        'Litet teamsamarbete',
+                        'Problemlösning i startup-miljö'
                     ],
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript', 'HTML', 'CSS'],
+                    technologies: ['React', 'JavaScript', 'Node.js', 'HTML', 'CSS', 'Git'],
                     icon: 'Building'
                 },
                 {
-                    id: 'bootcamp',
-                    company: 'Bootcamp Program',
-                    position: 'Full-Stack Student',
-                    period: '2021',
-                    duration: '1 år',
-                    location: 'Turkiet',
-                    type: 'Grund',
-                    description: 'Intensivt full-stack utvecklingsprogram som lade grunden för min programmeringskarriär. Byggde ett omfattande biluthyrningssystem.',
+                    id: 'speedyli',
+                    company: 'Speedyli',
+                    position: 'Fullstack Utvecklare',
+                    period: 'Sep 2022 - Mar 2023',
+                    duration: '7 månader',
+                    location: 'USA (Remote)',
+                    type: 'Internationell',
+                    description: 'Utvecklade plattform www.speedyli.com i en internationell teammiljö. Fick omfattande backend-erfarenhet med företagsnivå-teknologier.',
                     highlights: [
-                        'Omfattande biluthyrningsprojekt',
-                        'Backend-utveckling med Java',
-                        'Databasdesign och hantering',
-                        'Full-stack förståelse'
+                        'Internationellt teamsamarbete',
+                        'Plattformsutveckling på företagsnivå',
+                        'Fullständig utvecklingslivscykel-erfarenhet',
+                        'Fjärrarbetscompetens'
                     ],
-                    technologies: ['Java', 'SQL', 'MySQL', 'REST APIs', 'Git'],
+                    technologies: ['Spring Boot', 'Hibernate', 'Java', 'PostgreSQL', 'Postman', 'GitHub'],
                     icon: 'Code'
                 }
             ] as ExperienceItem[]
         },
         projects: {
             title: 'Projekt',
-            subtitle: 'Bygger digitala upplevelser',
+            subtitle: 'Bygger digitala lösningar',
             filters: {
                 all: 'Alla Projekt',
                 live: 'Live Projekt',
@@ -534,11 +563,12 @@ export const translations = {
                         'Responsiv design',
                         'Mjuka animationer',
                         'Modern UI/UX',
-                        'Prestandaoptimerad'
+                        'Prestandaoptimerad',
+                        'SEO-redo'
                     ],
-                    demoUrl: '#',
-                    githubUrl: '#',
-                    image: '/api/placeholder/600/400'
+                    demoUrl: 'https://omercelebi.se',
+                    githubUrl: 'https://github.com/OmerCeleb/omercelebi',
+                    image: '/images/projects/omercelebi.png'
                 },
                 {
                     id: 'construction-site',
@@ -553,79 +583,104 @@ export const translations = {
                         'Professionell tjänsteutställning',
                         'Kontakt och offertformulär',
                         'Mobil-först design',
-                        'SEO-optimerad'
+                        'SEO-optimerad',
+                        'Turkiskt språkstöd'
                     ],
                     demoUrl: 'https://kocaseyithafriyat.com/',
-                    image: '/api/placeholder/600/400'
+                    image: '/images/projects/kocaseyithafriyat.png'
                 },
                 {
                     id: 'konditori-sites',
-                    title: 'Svenska Café Webbplatser',
-                    description: 'Flera webbplatsprojekt för caféer och konditorier i Sverige. Fokus på elegant design och lokal marknadstilltal.',
-                    longDescription: 'Serie av webbplatser för svenska hospitalitetsföretag, med menyvisningar, platsinformation och bokningssystem.',
+                    title: 'Konditori & Café Webbplatser',
+                    description: 'Flera eleganta webbplatser för svenska hospitalitetsföretag. Innehåller menyvisningar, platsinformation och svenskt marknadsfokus.',
+                    longDescription: 'Vackra webbplatser för svenska hospitalitetsföretag, med menyvisningar, platsinformation och bokningssystem skräddarsydda för den svenska marknaden.',
                     category: 'development',
-                    status: 'Pågår',
-                    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'SEO'],
+                    status: 'Lanseras Snart',
+                    technologies: ['React', 'TypeScript', 'CSS', 'SEO'],
                     features: [
                         'Menyvisningssystem',
                         'Plats och öppettider',
                         'Svenskt marknadsfokus',
                         'Lokal SEO-optimering',
-                        'Bokningsintegrering'
+                        'Responsiv design',
+                        'Kontaktintegrering'
                     ],
-                    image: '/api/placeholder/600/400'
+                    image: '/images/projects/konditori.png'
                 },
                 {
                     id: 'todo-app',
-                    title: 'Full-Stack Todo Applikation',
-                    description: 'Modern uppgiftshanteringsapplikation med React frontend och Node.js backend. Funktioner för användarautentisering och realtidsuppdateringar.',
-                    longDescription: 'Omfattande todo-applikation som demonstrerar full-stack utvecklingsfärdigheter med moderna teknologier och bästa praxis.',
+                    title: 'Avancerad Todo Applikation',
+                    description: 'Modern uppgiftshanteringsapplikation med React frontend. Funktioner inkluderar intuitiv uppgiftsorganisation, kategorier och responsiv design.',
+                    longDescription: 'Omfattande todo-applikation som demonstrerar fullstack utvecklingsfärdigheter. Frontend färdig med React, backend för närvarande under utveckling med Node.js.',
                     category: 'development',
                     status: 'Frontend Färdig',
-                    technologies: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'JWT'],
+                    technologies: ['React', 'Node.js', 'CSS', 'JavaScript'],
                     features: [
-                        'Användarautentisering',
-                        'Uppgiftshantering',
-                        'Realtidsuppdateringar',
+                        'Uppgiftshanteringssystem',
+                        'Kategoriorganisation',
                         'Responsiv design',
-                        'REST API-integration'
+                        'Modern UI/UX',
+                        'Lokal lagring',
+                        'Framstegsföljning'
                     ],
-                    githubUrl: '#',
-                    image: '/api/placeholder/600/400'
+                    githubUrl: 'https://github.com/OmerCeleb/todo-app',
+                    image: '/images/projects/todoapp.png'
                 },
                 {
                     id: 'mobile-app',
                     title: 'React Native Mobilapp',
-                    description: 'Korsplattform mobilapplikation med färdig frontend-design. Backend-utveckling pågår med Node.js.',
+                    description: 'Korsplattforms mobilapplikation byggd med React Native. Frontend-design färdig, backend för närvarande under utveckling.',
                     longDescription: 'Mobilapplikation som visar React Native-färdigheter med fokus på användarupplevelse och moderna mobila UI-mönster.',
                     category: 'development',
                     status: 'Frontend Färdig',
-                    technologies: ['React Native', 'TypeScript', 'Node.js', 'Mobile UI/UX'],
+                    technologies: ['React Native', 'JavaScript', 'Mobile UI/UX'],
                     features: [
                         'Korsplattforms kompatibilitet',
-                        'Moderna UI-komponenter',
-                        'Navigationssystem',
-                        'Tillståndshantering',
-                        'API-integration redo'
+                        'Modern mobil UI',
+                        'Responsiv design',
+                        'Användarvänligt gränssnitt',
+                        'Prestandaoptimerad'
                     ],
-                    image: '/api/placeholder/300/600'
+                    githubUrl: 'https://github.com/OmerCeleb/mobile-app',
+                    image: '/images/projects/mobileapp.png'
                 },
                 {
                     id: 'alexum-projects',
                     title: 'Startup Projekt',
                     description: 'Tre kommersiella projekt utvecklade på Alexum AB inklusive företagswebbplats, SMS-portal och orderhanteringssystem.',
-                    longDescription: 'Kommersiella projekt under NDA inklusive webbapplikationer, portalsystem och företagsautomationsverktyg.',
+                    longDescription: 'Kommersiella projekt under NDA inklusive webbapplikationer, portalsystem och företagsautomationsverktyg. Fick värdefull erfarenhet i startup-miljö och teamsamarbete.',
                     category: 'commercial',
                     status: 'Färdiga',
-                    technologies: ['React', 'TypeScript', 'Node.js', 'JavaScript'],
+                    technologies: ['React', 'JavaScript', 'Node.js', 'CSS'],
                     features: [
                         'Företagswebbplatsutveckling',
                         'SMS-kommunikationsportal',
                         'Orderhanteringssystem',
                         'Teamsamarbete',
-                        'Kommersiella applikationer'
+                        'Kommersiella applikationer',
+                        'Startup-miljöerfarenhet'
                     ],
-                    isNDA: true
+                    isNDA: true,
+                    image: '/images/projects/startup.png'
+                },
+                {
+                    id: 'speedyli-platform',
+                    title: 'Speedyli Plattform',
+                    description: 'Internationell plattformsutveckling med backend-teknologier på företagsnivå. Arbetade med Spring Boot, Hibernate och PostgreSQL.',
+                    longDescription: 'Plattformsutveckling på företagsnivå i internationell teammiljö. Fick omfattande erfarenhet med Java-ekosystem och databashantering.',
+                    category: 'commercial',
+                    status: 'Färdig',
+                    technologies: ['Spring Boot', 'Hibernate', 'Java', 'PostgreSQL', 'Postman'],
+                    features: [
+                        'Företagsplattformsarkitektur',
+                        'Databasdesign och optimering',
+                        'Internationellt teamsamarbete',
+                        'Fullständig utvecklingslivscykel',
+                        'Prestandaoptimering',
+                        'API-utveckling'
+                    ],
+                    demoUrl: 'https://www.speedyli.com',
+                    image: '/images/projects/speedyli.png'
                 }
             ] as ProjectItem[]
         },
@@ -649,7 +704,7 @@ export const translations = {
                 availability: 'Tillgänglighet'
             },
             info: {
-                email: 'your.email@example.com',
+                email: 'omer534@outlook.com',
                 location: 'Stockholm, Sverige',
                 availability: 'Tillgänglig för frilansuppdrag'
             },
@@ -666,7 +721,7 @@ export const translations = {
             }
         },
         footer: {
-            description: 'Passionerad frontend utvecklare som skapar digitala upplevelser med moderna teknologier. Baserad i Stockholm, tillgänglig världen över.',
+            description: 'Lösningsorienterad fullstackutvecklare med expertis inom både frontend och backend teknologier. Baserad i Stockholm, tillgänglig världen över.',
             status: 'Tillgänglig för frilansuppdrag',
             location: 'Stockholm, Sverige',
             quickLinks: {

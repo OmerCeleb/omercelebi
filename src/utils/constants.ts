@@ -1,8 +1,8 @@
 export const LANGUAGES = ['en', 'sv'] as const;
 
 export const SOCIAL_LINKS = {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourprofile',
+    github: 'https://github.com/OmerCeleb',
+    linkedin: 'https://linkedin.com/in/omercelebii/',
     email: 'your.email@example.com',
 } as const;
 

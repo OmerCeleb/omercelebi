@@ -9,12 +9,7 @@ import { translations, type ProjectItem } from '../../../data/translations';
 const Projects: React.FC = () => {
     const { language } = useLanguage();
     const [activeProject, setActiveProject] = useState<string | null>(null);
-    const [filter, setFilter] = useState<string>('all');
     const data = translations[language].projects;
-
-    const filteredProjects = filter === 'all'
-        ? data.projects
-        : data.projects.filter((project: ProjectItem) => project.category === filter);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -69,47 +64,27 @@ const Projects: React.FC = () => {
                         <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-black mb-6">
                             {data.title}
                         </h2>
-                        <p className="text-xl md:text-2xl text-neutral-600 font-light mb-12">
+                        <p className="text-xl md:text-2xl text-neutral-600 font-light mb-8">
                             {data.subtitle}
                         </p>
 
-                        {/* Filter Buttons */}
-                        <div className="flex flex-wrap justify-center gap-4">
-                            {Object.entries(data.filters).map(([key, label]) => (
-                                <motion.button
-                                    key={key}
-                                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                                        filter === key
-                                            ? 'bg-red-600 text-white shadow-md'
-                                            : 'bg-white/80 text-neutral-700 hover:bg-white hover:shadow-lg'
-                                    }`}
-                                    onClick={() => setFilter(key)}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.6 + Object.keys(data.filters).indexOf(key) * 0.1 }}
-                                >
-                                    {label}
-                                </motion.button>
-                            ))}
-                        </div>
+                        {/* Project Stats */}
                     </motion.div>
 
                     {/* Projects Grid */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredProjects.map((project: ProjectItem, index: number) => (
+                        {data.projects.map((project: ProjectItem, index: number) => (
                             <motion.div
                                 key={project.id}
                                 className="group relative"
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1 + index * 0.1 }}
+                                transition={{ delay: 0.6 + index * 0.1 }}
                             >
                                 <div className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
 
                                     {/* Project Image */}
-                                    <div className="relative h-48 overflow-hidden bg-neutral-100">
+                                    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200">
                                         <img
                                             src={project.image || '/api/placeholder/600/400'}
                                             alt={project.title}
@@ -123,14 +98,27 @@ const Projects: React.FC = () => {
 
                                         {/* Status Badge */}
                                         <div className="absolute top-4 right-4">
-                                            <span className={`px-3 py-1 text-xs rounded-full font-medium ${
+                                            <span className={`px-3 py-1 text-xs rounded-full font-medium backdrop-blur-sm ${
                                                 project.status === 'Live' || project.status === 'Färdig' || project.status === 'Completed' ?
-                                                    'bg-green-100 text-green-700' :
-                                                    project.status?.includes('Progress') || project.status?.includes('Pågår') || project.status?.includes('Complete') ?
-                                                        'bg-blue-100 text-blue-700' :
-                                                        'bg-orange-100 text-orange-700'
+                                                    'bg-green-100/90 text-green-700 border border-green-200' :
+                                                    project.status?.includes('Progress') || project.status?.includes('Pågår') || project.status?.includes('Complete') || project.status?.includes('Frontend') ?
+                                                        'bg-blue-100/90 text-blue-700 border border-blue-200' :
+                                                        'bg-orange-100/90 text-orange-700 border border-orange-200'
                                             }`}>
                                                 {project.status}
+                                            </span>
+                                        </div>
+
+                                        {/* Category Badge */}
+                                        <div className="absolute top-4 left-4">
+                                            <span className={`px-2 py-1 text-xs rounded-md font-medium backdrop-blur-sm ${
+                                                project.category === 'live' ? 'bg-green-500/20 text-green-700 border border-green-300/50' :
+                                                    project.category === 'development' ? 'bg-blue-500/20 text-blue-700 border border-blue-300/50' :
+                                                        'bg-purple-500/20 text-purple-700 border border-purple-300/50'
+                                            }`}>
+                                                {project.category === 'live' ? (language === 'en' ? 'Live' : 'Live') :
+                                                    project.category === 'development' ? (language === 'en' ? 'Dev' : 'Dev') :
+                                                        (language === 'en' ? 'Commercial' : 'Kommersiell')}
                                             </span>
                                         </div>
                                     </div>
@@ -141,17 +129,22 @@ const Projects: React.FC = () => {
                                             {project.title}
                                         </h3>
 
-                                        <p className="text-neutral-600 mb-4 leading-relaxed">
+                                        <p className="text-neutral-600 mb-4 leading-relaxed line-clamp-3">
                                             {project.description}
                                         </p>
 
                                         {/* Technologies */}
                                         <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.technologies.map((tech: string, idx: number) => (
-                                                <span key={idx} className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded font-medium">
+                                            {project.technologies.slice(0, 4).map((tech: string, idx: number) => (
+                                                <span key={idx} className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded font-medium border border-neutral-200">
                                                     {tech}
                                                 </span>
                                             ))}
+                                            {project.technologies.length > 4 && (
+                                                <span className="px-2 py-1 bg-neutral-50 text-neutral-500 text-xs rounded border border-neutral-200">
+                                                    +{project.technologies.length - 4}
+                                                </span>
+                                            )}
                                         </div>
 
                                         {/* Action Buttons */}
@@ -162,11 +155,14 @@ const Projects: React.FC = () => {
                                                         href={project.demoUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="flex items-center space-x-1 text-red-600 hover:text-red-700 transition-colors"
+                                                        className="flex items-center space-x-1 px-3 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 transition-colors rounded-md border border-red-200"
                                                         whileHover={{ scale: 1.05 }}
+                                                        whileTap={{ scale: 0.95 }}
                                                     >
-                                                        <ExternalLink size={16} />
-                                                        <span className="text-sm font-medium">Demo</span>
+                                                        <ExternalLink size={14} />
+                                                        <span className="text-xs font-medium">
+                                                            {language === 'en' ? 'Demo' : 'Demo'}
+                                                        </span>
                                                     </motion.a>
                                                 )}
 
@@ -175,22 +171,28 @@ const Projects: React.FC = () => {
                                                         href={project.githubUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="flex items-center space-x-1 text-neutral-600 hover:text-black transition-colors"
+                                                        className="flex items-center space-x-1 px-3 py-1.5 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 transition-colors rounded-md border border-neutral-200"
                                                         whileHover={{ scale: 1.05 }}
+                                                        whileTap={{ scale: 0.95 }}
                                                     >
-                                                        <Github size={16} />
-                                                        <span className="text-sm font-medium">Code</span>
+                                                        <Github size={14} />
+                                                        <span className="text-xs font-medium">
+                                                            {language === 'en' ? 'Code' : 'Kod'}
+                                                        </span>
                                                     </motion.a>
                                                 )}
                                             </div>
 
                                             <motion.button
-                                                className="flex items-center space-x-1 text-neutral-500 hover:text-black transition-colors"
+                                                className="flex items-center space-x-1 px-3 py-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors rounded-md border border-blue-200"
                                                 onClick={() => setActiveProject(activeProject === project.id ? null : project.id)}
                                                 whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
                                             >
-                                                <Eye size={16} />
-                                                <span className="text-sm">Details</span>
+                                                <Eye size={14} />
+                                                <span className="text-xs font-medium">
+                                                    {language === 'en' ? 'Details' : 'Detaljer'}
+                                                </span>
                                             </motion.button>
                                         </div>
 
@@ -202,12 +204,29 @@ const Projects: React.FC = () => {
                                         >
                                             {activeProject === project.id && (
                                                 <div className="pt-4 mt-4 border-t border-neutral-200">
-                                                    <p className="text-sm text-neutral-700 mb-3 leading-relaxed">
+                                                    <p className="text-sm text-neutral-700 mb-4 leading-relaxed">
                                                         {project.longDescription}
                                                     </p>
 
+                                                    {/* All Technologies */}
+                                                    <div className="mb-4">
+                                                        <h4 className="text-sm font-semibold text-black mb-2">
+                                                            {language === 'en' ? 'Technologies Used:' : 'Använda Teknologier:'}
+                                                        </h4>
+                                                        <div className="flex flex-wrap gap-1">
+                                                            {project.technologies.map((tech: string, idx: number) => (
+                                                                <span key={idx} className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded border border-neutral-200">
+                                                                    {tech}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Key Features */}
                                                     <div className="mb-3">
-                                                        <h4 className="text-sm font-semibold text-black mb-2">Key Features:</h4>
+                                                        <h4 className="text-sm font-semibold text-black mb-2">
+                                                            {language === 'en' ? 'Key Features:' : 'Nyckelfunktioner:'}
+                                                        </h4>
                                                         <ul className="space-y-1">
                                                             {project.features.map((feature: string, idx: number) => (
                                                                 <li key={idx} className="text-xs text-neutral-600 flex items-start">

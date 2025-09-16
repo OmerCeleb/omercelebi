@@ -99,8 +99,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
                     "jobTitle": "Frontend Developer",
                     "url": "https://omercelebi.se",
                     "sameAs": [
-                        "https://github.com/yourusername",
-                        "https://linkedin.com/in/yourprofile"
+                        "https://github.com/OmerCeleb",
+                        "https://linkedin.com/in/omercelebii/"
                     ],
                     "address": {
                         "@type": "PostalAddress",

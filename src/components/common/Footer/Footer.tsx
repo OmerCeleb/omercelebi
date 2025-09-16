@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
     // Simple static data - no complex types
     const footerData = {
         en: {
-            description: 'Passionate frontend developer crafting digital experiences with modern technologies. Based in Stockholm, available worldwide.',
+            description: 'Solution-oriented fullstack developer with expertise in both frontend and backend technologies. Based in Stockholm, available worldwide.',
             status: 'Available for freelance projects',
             location: 'Stockholm, Sweden',
             quickLinksTitle: 'Quick Links',
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
             backToTop: 'Back to top'
         },
         sv: {
-            description: 'Passionerad frontend utvecklare som skapar digitala upplevelser med moderna teknologier. Baserad i Stockholm, tillgänglig världen över.',
+            description: 'Lösningsorienterad fullstackutvecklare med expertis inom både frontend och backend teknologier. Baserad i Stockholm, tillgänglig världen över.',
             status: 'Tillgänglig för frilansuppdrag',
             location: 'Stockholm, Sverige',
             quickLinksTitle: 'Snabblänkar',
@@ -46,9 +46,9 @@ const Footer: React.FC = () => {
     };
 
     const socialLinks = [
-        { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
-        { icon: Linkedin, href: 'https://linkedin.com/in/yourprofile', label: 'LinkedIn' },
-        { icon: Mail, href: 'mailto:your.email@example.com', label: 'Email' }
+        { icon: Github, href: 'https://github.com/OmerCeleb', label: 'GitHub' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/in/omercelebii/', label: 'LinkedIn' },
+        { icon: Mail, href: 'mailto:omer534@outlook.com', label: 'Email' }
     ];
 
     const quickLinks = [
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-2xl font-semibold text-black">Ömer</h3>
-                                        <p className="text-neutral-500 text-sm">Frontend Developer</p>
+                                        <p className="text-neutral-500 text-sm">Fullstack Developer</p>
                                     </div>
                                 </div>
 
@@ -140,6 +140,22 @@ const Footer: React.FC = () => {
                                     <MapPin size={16} />
                                     <span className="text-sm">{data.location}</span>
                                 </div>
+
+                                {/* Contact Info */}
+                                <div className="mt-6 space-y-2">
+                                    <div className="flex items-center space-x-2 text-neutral-500 text-sm">
+                                        <Mail size={14} />
+                                        <a href="mailto:omer534@outlook.com" className="hover:text-red-600 transition-colors">
+                                            omer534@outlook.com
+                                        </a>
+                                    </div>
+                                    <div className="flex items-center space-x-2 text-neutral-500 text-sm">
+                                        <span>📱</span>
+                                        <a href="tel:+46739238707" className="hover:text-red-600 transition-colors">
+                                            +46 73 923 87 07
+                                        </a>
+                                    </div>
+                                </div>
                             </motion.div>
 
                             {/* Quick Links */}
@@ -157,6 +173,33 @@ const Footer: React.FC = () => {
                                             <span>{link.label}</span>
                                         </motion.button>
                                     ))}
+                                </div>
+
+                                {/* Quick Contact */}
+                                <div className="mt-8">
+                                    <h4 className="text-lg font-semibold text-black mb-4">
+                                        {language === 'en' ? 'Quick Contact' : 'Snabb Kontakt'}
+                                    </h4>
+                                    <div className="space-y-3">
+                                        <motion.a
+                                            href="mailto:omer534@outlook.com?subject=Project Inquiry&body=Hi Ömer,%0D%0A%0D%0AI'm interested in discussing a project with you."
+                                            className="flex items-center space-x-2 text-neutral-600 hover:text-red-600 transition-colors text-sm"
+                                            whileHover={{ x: 5 }}
+                                        >
+                                            <Mail size={14} />
+                                            <span>{language === 'en' ? 'Send Email' : 'Skicka E-post'}</span>
+                                        </motion.a>
+                                        <motion.a
+                                            href="https://wa.me/46739238707"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center space-x-2 text-neutral-600 hover:text-green-600 transition-colors text-sm"
+                                            whileHover={{ x: 5 }}
+                                        >
+                                            <span>📱</span>
+                                            <span>WhatsApp</span>
+                                        </motion.a>
+                                    </div>
                                 </div>
                             </motion.div>
 
@@ -211,7 +254,7 @@ const Footer: React.FC = () => {
 
                             {/* Copyright */}
                             <div className="text-neutral-500 text-sm text-center md:text-left">
-                                © {currentYear} Ömer. {data.copyright}
+                                © {currentYear} Ömer Celebi. {data.copyright}
                             </div>
 
                             {/* Made with Love */}
@@ -228,12 +271,12 @@ const Footer: React.FC = () => {
 
                             {/* Tech Stack */}
                             <div className="flex items-center space-x-1 text-neutral-400 text-xs">
-                                {['React', 'TypeScript', 'Tailwind'].map((tech, index) => (
+                                {['React', 'TypeScript', 'Java', 'Node.js'].map((tech, index) => (
                                     <React.Fragment key={tech}>
                                         <span className="hover:text-red-500 transition-colors cursor-default">
                                             {tech}
                                         </span>
-                                        {index < 2 && <span>•</span>}
+                                        {index < 3 && <span>•</span>}
                                     </React.Fragment>
                                 ))}
                             </div>
