@@ -240,20 +240,6 @@ const Footer: React.FC = () => {
                                     <span className="text-sm font-medium">{data.backToTop}</span>
                                 </motion.button>
 
-                                {/* Portfolio Link */}
-                                <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-lg border border-red-200">
-                                    <p className="text-sm text-red-800 mb-2 font-medium">
-                                        {language === 'en' ? 'Visit my full portfolio:' : 'Besök min kompletta portfölj:'}
-                                    </p>
-                                    <a
-                                        href="https://omercelebi.se"
-                                        className="text-red-600 hover:text-red-700 font-medium text-sm underline"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        omercelebi.se
-                                    </a>
-                                </div>
                             </motion.div>
                         </div>
                     </div>
