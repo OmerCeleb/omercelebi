@@ -87,18 +87,23 @@ export const translations = {
             story: {
                 bootcamp: {
                     title: 'The Beginning',
-                    period: '2022',
+                    period: '2020',
                     content: 'My development journey began with Java & Spring Boot bootcamp where I built a comprehensive rent-a-car management system. This solid foundation taught me the importance of clean code and systematic thinking.'
                 } as StoryItem,
                 speedyli: {
                     title: 'International Experience',
                     period: '2022-2023',
-                    content: '7 months at Speedyli (USA) was transformative. Working on an international platform with Spring Boot, Hibernate, Java, and PostgreSQL expanded my backend expertise and teamwork skills.'
+                    content: '7 months at Speedyli (USA) was transformative. Working remotely on an international platform with Spring Boot, Hibernate, Java, and PostgreSQL expanded my backend expertise and international collaboration skills.'
+                } as StoryItem,
+                alexum: {
+                    title: 'Startup Experience',
+                    period: '2025',
+                    content: '8 months at Alexum AB was an intensive startup experience. Focused primarily on frontend development with React and JavaScript while contributing to backend Node.js tasks. Participated in three diverse projects with a small development team.'
                 } as StoryItem,
                 current: {
                     title: 'Today',
                     period: 'Present',
-                    content: 'At Alexum AB, I evolved into fullstack development, mastering React and JavaScript. While working at PostNord for stability, I continue growing through freelance projects across Sweden and Turkey.'
+                    content: 'Currently working at PostNord as Terminal Worker for financial stability while actively freelancing as a web developer. Building diverse portfolio with projects across Sweden and Turkey, combining professional stability with passion for development.'
                 } as StoryItem
             },
             approach: {
@@ -127,7 +132,7 @@ export const translations = {
                 ] as ApproachItem[]
             },
             philosophy: 'I believe in combining traditional development skills with modern AI tools to create efficient, high-quality solutions. Every project is an opportunity to learn and innovate.',
-            currentFocus: 'Currently working on expanding fullstack capabilities while freelancing and building a diverse portfolio of Swedish and international projects.',
+            currentFocus: 'Currently working at PostNord for financial stability while actively pursuing freelance web development projects. Building a diverse portfolio of Swedish and international projects, combining professional work experience with passion for modern web development.',
             location: 'Based in Stockholm, Sweden'
         },
         experience: {
@@ -257,7 +262,7 @@ export const translations = {
                         'Responsive design',
                         'Contact integration'
                     ],
-                    image: '/images/projects/konditorilyran.png'
+                    image: '/images/projects/konditori.png'
                 },
                 {
                     id: 'todo-app',
@@ -275,7 +280,7 @@ export const translations = {
                         'Local storage',
                         'Progress tracking'
                     ],
-                    githubUrl: 'https://github.com/OmerCeleb/todo-app-frontend',
+                    githubUrl: 'https://github.com/OmerCeleb/todo-app',
                     image: '/images/projects/todoapp.png'
                 },
                 {
@@ -293,7 +298,8 @@ export const translations = {
                         'User-friendly interface',
                         'Performance optimized'
                     ],
-                    image: '/images/projects/nospend.png'
+                    githubUrl: 'https://github.com/OmerCeleb/mobile-app',
+                    image: '/images/projects/mobileapp.png'
                 },
                 {
                     id: 'alexum-projects',
@@ -312,7 +318,7 @@ export const translations = {
                         'Startup environment experience'
                     ],
                     isNDA: true,
-                    image: '/images/projects/Alexum.png'
+                    image: '/images/projects/startup.png'
                 },
                 {
                     id: 'speedyli-platform',
@@ -331,7 +337,7 @@ export const translations = {
                         'API development'
                     ],
                     demoUrl: 'https://www.speedyli.com',
-                    image: '/images/projects/Speedy.png'
+                    image: '/images/projects/speedyli.png'
                 }
             ] as ProjectItem[]
         },
@@ -435,18 +441,23 @@ export const translations = {
             story: {
                 bootcamp: {
                     title: 'Början',
-                    period: '2022',
+                    period: '2020',
                     content: 'Min utvecklingsresa började med Java & Spring Boot bootcamp där jag byggde ett omfattande biluthyrningshanteringssystem. Denna solida grund lärde mig vikten av ren kod och systematiskt tänkande.'
                 } as StoryItem,
                 speedyli: {
                     title: 'Internationell Erfarenhet',
                     period: '2022-2023',
-                    content: '7 månader på Speedyli (USA) var förändrande. Att arbeta med en internationell plattform med Spring Boot, Hibernate, Java och PostgreSQL utökade min backend-expertis och teamarbetsfärdigheter.'
+                    content: '7 månader på Speedyli (USA) var förändrande. Att arbeta remote på en internationell plattform med Spring Boot, Hibernate, Java och PostgreSQL utökade min backend-expertis och internationella samarbetsförmåga.'
+                } as StoryItem,
+                alexum: {
+                    title: 'Startup-Erfarenhet',
+                    period: '2025',
+                    content: '8 månader på Alexum AB var en intensiv startup-upplevelse. Fokuserade främst på frontend-utveckling med React och JavaScript samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre olika projekt med ett litet utvecklingsteam.'
                 } as StoryItem,
                 current: {
                     title: 'Idag',
                     period: 'Nuvarande',
-                    content: 'På Alexum AB utvecklades jag till fullstack-utveckling och bemästrade React och JavaScript. Medan jag arbetar på PostNord för stabilitet fortsätter jag växa genom frilansuppdrag över Sverige och Turkiet.'
+                    content: 'Arbetar för närvarande på PostNord som Terminalarbetare för ekonomisk stabilitet medan jag aktivt frilansar som webbutvecklare. Bygger mångsidig portfölj med projekt över Sverige och Turkiet, kombinerar professionell stabilitet med passion för utveckling.'
                 } as StoryItem
             },
             approach: {
@@ -475,7 +486,7 @@ export const translations = {
                 ] as ApproachItem[]
             },
             philosophy: 'Jag tror på att kombinera traditionella utvecklingsfärdigheter med moderna AI-verktyg för att skapa effektiva, högkvalitativa lösningar. Varje projekt är en möjlighet att lära och innovera.',
-            currentFocus: 'Arbetar för närvarande med att utöka fullstack-kapabiliteter medan jag frilansbygger och bygger en mångsidig portfölj av svenska och internationella projekt.',
+            currentFocus: 'Arbetar för närvarande på PostNord för ekonomisk stabilitet medan jag aktivt bedriver frilans-webbutvecklingsprojekt. Bygger en mångsidig portfölj av svenska och internationella projekt, kombinerar professionell arbetslivserfarenhet med passion för modern webbutveckling.',
             location: 'Baserad i Stockholm, Sverige'
         },
         experience: {
@@ -568,7 +579,7 @@ export const translations = {
                     ],
                     demoUrl: 'https://omercelebi.se',
                     githubUrl: 'https://github.com/OmerCeleb/omercelebi',
-                    image: '/images/projects/omercelebi.png'
+                    image: '/images/projects/omercelebi.jpg'
                 },
                 {
                     id: 'construction-site',
@@ -587,7 +598,7 @@ export const translations = {
                         'Turkiskt språkstöd'
                     ],
                     demoUrl: 'https://kocaseyithafriyat.com/',
-                    image: '/images/projects/kocaseyithafriyat.png'
+                    image: '/images/projects/kocaseyithafriyat.jpg'
                 },
                 {
                     id: 'konditori-sites',
@@ -605,7 +616,7 @@ export const translations = {
                         'Responsiv design',
                         'Kontaktintegrering'
                     ],
-                    image: '/images/projects/konditorilyran.png'
+                    image: '/images/projects/konditorilyran.jpg'
                 },
                 {
                     id: 'todo-app',
@@ -624,7 +635,7 @@ export const translations = {
                         'Framstegsföljning'
                     ],
                     githubUrl: 'https://github.com/OmerCeleb/todo-app-frontend',
-                    image: '/images/projects/todoapp.png'
+                    image: '/images/projects/todoapp.jpg'
                 },
                 {
                     id: 'mobile-app',
@@ -641,7 +652,7 @@ export const translations = {
                         'Användarvänligt gränssnitt',
                         'Prestandaoptimerad'
                     ],
-                    image: '/images/projects/nospend.png'
+                    image: '/images/projects/nospend.jpg'
                 },
                 {
                     id: 'alexum-projects',
@@ -660,7 +671,7 @@ export const translations = {
                         'Startup-miljöerfarenhet'
                     ],
                     isNDA: true,
-                    image: '/images/projects/Alexum.png'
+                    image: '/images/projects/Alexum.jpg'
                 },
                 {
                     id: 'speedyli-platform',
@@ -679,7 +690,7 @@ export const translations = {
                         'API-utveckling'
                     ],
                     demoUrl: 'https://www.speedyli.com',
-                    image: '/images/projects/Speedy.png'
+                    image: '/images/projects/Speedy.jpg'
                 }
             ] as ProjectItem[]
         },

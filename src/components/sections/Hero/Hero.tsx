@@ -127,19 +127,6 @@ const Hero: React.FC = () => {
                                 </p>
                             </motion.div>
 
-                            {/* Minimalist CTA */}
-                            <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
-                                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                    <motion.button
-                                        className="group px-8 py-4 bg-red-600 text-white font-medium tracking-wide transition-all duration-300 hover:bg-red-700"
-                                        whileHover={{ y: -2 }}
-                                        whileTap={{ scale: 0.98 }}
-                                    >
-                                        {data.cta.aboutMe}
-                                    </motion.button>
-
-                                </div>
-                            </motion.div>
 
                             {/* Clean Stats - Horizontal Layout for Mobile */}
                             <motion.div variants={itemVariants} className="lg:hidden mb-16">

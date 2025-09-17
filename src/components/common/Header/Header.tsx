@@ -1,7 +1,7 @@
 // src/components/common/Header/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, Briefcase, FolderOpen, Mail } from 'lucide-react';
+import { Home, User, Briefcase, FolderOpen, Mail, ExternalLink } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { navigationData } from '../../../data/navigationData';
@@ -38,6 +38,18 @@ const Header: React.FC = () => {
         setIsMenuOpen(false);
     }, [location.pathname]);
 
+    // Prevent body scroll when menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMenuOpen]);
+
     const getCurrentPage = () => {
         const currentPath = location.pathname;
         const currentNav = navItems.find(item => item.path === currentPath);
@@ -51,12 +63,63 @@ const Header: React.FC = () => {
 
     const currentPage = getCurrentPage();
 
+    // Animation variants
+    const menuVariants = {
+        closed: {
+            x: '100%',
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40
+            }
+        },
+        open: {
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40
+            }
+        }
+    };
+
+    const backdropVariants = {
+        closed: {
+            opacity: 0,
+            transition: {
+                duration: 0.2
+            }
+        },
+        open: {
+            opacity: 1,
+            transition: {
+                duration: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        closed: {
+            x: 50,
+            opacity: 0
+        },
+        open: (i: number) => ({
+            x: 0,
+            opacity: 1,
+            transition: {
+                delay: 0.1 + i * 0.05,
+                duration: 0.3,
+                ease: "easeOut"
+            }
+        })
+    };
+
     return (
         <>
             <motion.header
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
                     isScrolled
-                        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50'
+                        ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50'
                         : 'bg-white/80 backdrop-blur-sm'
                 }`}
                 initial={{ y: -100 }}
@@ -66,21 +129,21 @@ const Header: React.FC = () => {
                 <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between h-16 md:h-20">
 
-                        {/* Logo/Brand with PNG */}
+                        {/* Logo/Brand */}
                         <motion.div
-                            className="flex items-center space-x-3 cursor-pointer z-60"
+                            className="flex items-center space-x-3 cursor-pointer z-[60]"
                             onClick={() => handleNavClick('/')}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {/* PNG Logo */}
-                            <div className="flex items-center space-x-3">
-                                <img
-                                    src="/images/logo.png"
-                                    alt="Ömer Celebi Logo"
-                                    className="h-18 w-auto object-contain"
-                                />
-
+                            <img
+                                src="/images/logo.png"
+                                alt="Ömer Celebi Logo"
+                                className="h-10 w-auto object-contain"
+                            />
+                            <div className="hidden sm:block">
+                                <h1 className="text-xl font-bold text-gray-900">Ömer Celebi</h1>
+                                <p className="text-xs text-gray-500">Fullstack Developer</p>
                             </div>
                         </motion.div>
 
@@ -152,34 +215,28 @@ const Header: React.FC = () => {
 
                             {/* Mobile Menu Toggle */}
                             <motion.button
-                                className="md:hidden p-2 text-gray-700 hover:text-red-600 transition-colors z-60 relative"
+                                className="md:hidden relative z-[60] p-2 text-gray-700 hover:text-red-600 transition-colors"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <AnimatePresence mode="wait">
-                                    {isMenuOpen ? (
-                                        <motion.div
-                                            key="close"
-                                            initial={{ rotate: -90, opacity: 0 }}
-                                            animate={{ rotate: 0, opacity: 1 }}
-                                            exit={{ rotate: 90, opacity: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <X size={24} />
-                                        </motion.div>
-                                    ) : (
-                                        <motion.div
-                                            key="menu"
-                                            initial={{ rotate: 90, opacity: 0 }}
-                                            animate={{ rotate: 0, opacity: 1 }}
-                                            exit={{ rotate: -90, opacity: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <Menu size={24} />
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                <div className="w-6 h-6 relative">
+                                    <motion.span
+                                        className="absolute top-1 left-0 w-6 h-0.5 bg-current rounded-full"
+                                        animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    />
+                                    <motion.span
+                                        className="absolute top-3 left-0 w-6 h-0.5 bg-current rounded-full"
+                                        animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    />
+                                    <motion.span
+                                        className="absolute top-5 left-0 w-6 h-0.5 bg-current rounded-full"
+                                        animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    />
+                                </div>
                             </motion.button>
                         </div>
                     </div>
@@ -192,118 +249,165 @@ const Header: React.FC = () => {
                     <>
                         {/* Backdrop */}
                         <motion.div
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-black/40 backdrop-blur-md z-40 md:hidden"
+                            variants={backdropVariants}
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
                             onClick={() => setIsMenuOpen(false)}
                         />
 
                         {/* Mobile Menu */}
                         <motion.div
-                            className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 md:hidden"
-                            initial={{ x: '100%' }}
-                            animate={{ x: 0 }}
-                            exit={{ x: '100%' }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-50 md:hidden shadow-2xl"
+                            variants={menuVariants}
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
                         >
-                            {/* Menu Header with PNG Logo */}
-                            <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-red-50 to-red-100">
-                                <div className="flex items-center space-x-3 mb-4">
-                                    <img
-                                        src="/images/logo.png"
-                                        alt="Ömer Celebi Logo"
-                                        className="h-12 w-auto object-contain"
-                                    />
-                                    <div>
-                                        <h2 className="text-xl font-bold text-gray-900">Ömer Celebi</h2>
-                                        <p className="text-sm text-red-600">Fullstack Developer</p>
+                            {/* Menu Header */}
+                            <div className="relative h-32 bg-gradient-to-br from-slate-50 via-gray-50 to-stone-50 border-b border-gray-100/50">
+
+                                {/* Subtle Decorative Elements */}
+                                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50/30 to-transparent rounded-full -translate-y-20 translate-x-20" />
+                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-stone-50/40 to-transparent rounded-full translate-y-16 -translate-x-16" />
+
+                                <div className="relative z-10 p-6 h-full flex flex-col justify-end">
+                                    <div className="flex items-center space-x-3">
+                                        <img
+                                            src="/images/logo.png"
+                                            alt="Ömer Celebi Logo"
+                                            className="h-12 w-auto object-contain"
+                                        />
+                                        <div>
+                                            <h2 className="text-xl font-semibold text-gray-900">Ömer Celebi</h2>
+                                            <p className="text-gray-600 text-sm">Fullstack Developer</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Status Indicator */}
+                                    <div className="flex items-center space-x-2 mt-4">
+                                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-sm" />
+                                        <span className="text-gray-700 text-xs font-medium">
+                                            {language === 'en' ? 'Available for projects' : 'Tillgänglig för projekt'}
+                                        </span>
                                     </div>
                                 </div>
-
                             </div>
 
                             {/* Navigation Items */}
-                            <nav className="p-6 space-y-2">
+                            <div className="px-6 py-6 space-y-2 flex-1 overflow-y-auto">
                                 {navItems.map((item, index) => {
                                     const IconComponent = item.icon;
                                     const isActive = currentPage === item.key;
 
                                     return (
-                                        <motion.button
+                                        <motion.div
                                             key={item.key}
-                                            className={`w-full flex items-center space-x-4 p-4 rounded-xl text-left transition-all duration-200 group ${
-                                                isActive
-                                                    ? 'text-red-600 bg-red-50 border-l-4 border-red-600 shadow-sm'
-                                                    : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
+                                            custom={index}
+                                            variants={itemVariants}
+                                            initial="closed"
+                                            animate="open"
+                                            className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ${
+                                                isActive ? 'bg-slate-50 border border-slate-200/50' : 'hover:bg-gray-50/80 border border-transparent'
                                             }`}
                                             onClick={() => handleNavClick(item.path)}
-                                            initial={{ opacity: 0, x: 50 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                            whileHover={{ x: 5 }}
-                                            whileTap={{ scale: 0.98 }}
                                         >
-                                            <div className={`p-2 rounded-lg transition-colors ${
-                                                isActive
-                                                    ? 'bg-red-100 text-red-600'
-                                                    : 'bg-gray-100 text-gray-600 group-hover:bg-red-100 group-hover:text-red-600'
+                                            <div className={`flex items-center space-x-4 p-4 cursor-pointer relative z-10 ${
+                                                isActive ? 'text-red-600' : 'text-gray-700'
                                             }`}>
-                                                <IconComponent size={18} />
+                                                <div className={`p-2 rounded-lg transition-colors ${
+                                                    isActive
+                                                        ? 'bg-red-100 text-red-600'
+                                                        : 'bg-gray-100 text-gray-600 group-hover:bg-red-100 group-hover:text-red-600'
+                                                }`}>
+                                                    <IconComponent size={20} />
+                                                </div>
+                                                <div>
+                                                    <span className="font-medium text-base">{item.label}</span>
+                                                    {isActive && (
+                                                        <div className="text-xs text-red-500 mt-0.5">
+                                                            {language === 'en' ? 'Current page' : 'Nuvarande sida'}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="ml-auto">
+                                                    <motion.div
+                                                        className="text-gray-400"
+                                                        whileHover={{ x: 5 }}
+                                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                                    >
+                                                        <ExternalLink size={16} />
+                                                    </motion.div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <span className="font-medium">{item.label}</span>
-                                                {isActive && (
-                                                    <div className="text-xs text-red-500 mt-0.5">
-                                                        {language === 'en' ? 'Current page' : 'Nuvarande sida'}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </motion.button>
+
+                                            {/* Active indicator */}
+                                            {isActive && (
+                                                <motion.div
+                                                    className="absolute left-0 top-0 bottom-0 w-1 bg-red-600 rounded-r"
+                                                    layoutId="mobileActiveIndicator"
+                                                    initial={false}
+                                                />
+                                            )}
+                                        </motion.div>
                                     );
                                 })}
-                            </nav>
+                            </div>
 
-                            {/* Footer */}
-                            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-100 bg-gray-50">
-                                <div className="text-center">
-                                    <p className="text-sm text-gray-500 mb-2">
-                                        {language === 'en' ? 'Get in touch' : 'Kontakta mig'}
-                                    </p>
-                                    <div className="flex justify-center space-x-4">
-                                        <motion.a
-                                            href="mailto:omer534@outlook.com"
-                                            className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-gray-600 hover:text-red-600"
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                        >
-                                            <Mail size={16} />
-                                        </motion.a>
-                                        <motion.a
-                                            href="https://github.com/OmerCeleb"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-gray-600 hover:text-red-600"
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                        >
-                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                                            </svg>
-                                        </motion.a>
-                                        <motion.a
-                                            href="https://www.linkedin.com/in/omercelebii/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-gray-600 hover:text-red-600"
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                        >
-                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/>
-                                            </svg>
-                                        </motion.a>
+                            {/* Footer Section */}
+                            <div className="px-6 py-6 border-t border-gray-100">
+                                <div className="space-y-4">
+                                    {/* Contact Info */}
+                                    <div className="text-center">
+                                        <p className="text-sm font-medium text-gray-900 mb-2">
+                                            {language === 'en' ? 'Let\'s connect' : 'Låt oss ansluta'}
+                                        </p>
+                                        <div className="flex justify-center space-x-4">
+                                            <motion.a
+                                                href="mailto:omer534@outlook.com"
+                                                className="p-3 bg-gray-50 rounded-lg hover:bg-red-50 transition-colors text-gray-600 hover:text-red-600"
+                                                whileHover={{ scale: 1.1, y: -2 }}
+                                                whileTap={{ scale: 0.9 }}
+                                            >
+                                                <Mail size={18} />
+                                            </motion.a>
+                                            <motion.a
+                                                href="https://github.com/OmerCeleb"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-3 bg-gray-50 rounded-lg hover:bg-red-50 transition-colors text-gray-600 hover:text-red-600"
+                                                whileHover={{ scale: 1.1, y: -2 }}
+                                                whileTap={{ scale: 0.9 }}
+                                            >
+                                                <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                                                </svg>
+                                            </motion.a>
+                                            <motion.a
+                                                href="https://www.linkedin.com/in/omercelebii/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-3 bg-gray-50 rounded-lg hover:bg-red-50 transition-colors text-gray-600 hover:text-red-600"
+                                                whileHover={{ scale: 1.1, y: -2 }}
+                                                whileTap={{ scale: 0.9 }}
+                                            >
+                                                <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                                </svg>
+                                            </motion.a>
+                                        </div>
                                     </div>
+
+                                    {/* Close Button */}
+                                    <motion.button
+                                        className="w-full py-3 px-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                                        onClick={() => setIsMenuOpen(false)}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        {language === 'en' ? 'Close Menu' : 'Stäng Meny'}
+                                    </motion.button>
                                 </div>
                             </div>
                         </motion.div>
