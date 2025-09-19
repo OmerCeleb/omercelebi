@@ -6,6 +6,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/common/Header/Header';
 import Footer from './components/common/Footer/Footer';
 import SEOHead from './components/common/SEOHead/SEOHead';
+import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 import Hero from './components/sections/Hero/Hero';
 import About from './components/sections/About/About';
 import Experience from './components/sections/Experience/Experience';
@@ -70,6 +71,9 @@ function App() {
             <LanguageProvider>
                 <Router>
                     <div className="min-h-screen bg-neutral-50">
+                        {/* Automatic scroll to top on route change */}
+                        <ScrollToTop />
+
                         <Header />
 
                         {/* Page Content */}

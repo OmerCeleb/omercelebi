@@ -42,8 +42,14 @@ const Footer: React.FC = () => {
 
     const handleNavigation = (path: string) => {
         navigate(path);
-        scrollToTop();
+
+        // Scroll to top on navigation
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
+
 
     const socialLinks = [
         { icon: Github, href: 'https://github.com/OmerCeleb', label: 'GitHub' },

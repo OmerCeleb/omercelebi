@@ -59,7 +59,15 @@ const Header: React.FC = () => {
     const handleNavClick = (path: string) => {
         navigate(path);
         setIsMenuOpen(false);
+
+        // Immediately scroll to top when navigating
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
     };
+
 
     const currentPage = getCurrentPage();
 

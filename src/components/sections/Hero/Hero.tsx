@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
 
                             {/* Minimal Description */}
                             <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
-                                <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed font-light">
+                                <p className="text-xl md:text-2xl text-neutral-800 leading-relaxed font-light">
                                     {data.description}
                                     <span className="block mt-4 text-black">
                     {data.basedIn}

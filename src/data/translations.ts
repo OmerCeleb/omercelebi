@@ -77,7 +77,7 @@ export const translations = {
             },
             technologies: 'Technologies',
             sideText: {
-                portfolio: 'PORTFOLIO 2024',
+                portfolio: 'PORTFOLIO 2025',
                 location: 'STOCKHOLM'
             }
         },
@@ -431,7 +431,7 @@ export const translations = {
             },
             technologies: 'Teknologier',
             sideText: {
-                portfolio: 'PORTFÖLJ 2024',
+                portfolio: 'PORTFÖLJ 2025',
                 location: 'STOCKHOLM'
             }
         },
