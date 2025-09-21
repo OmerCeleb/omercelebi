@@ -225,7 +225,7 @@ export const translations = {
                     ],
                     demoUrl: 'https://omercelebi.se',
                     githubUrl: 'https://github.com/OmerCeleb/omercelebi',
-                    image: '/images/projects/omercelebi.png'
+                    image: '/images/projects/omercelebi.jpg'
                 },
                 {
                     id: 'construction-site',
@@ -244,7 +244,7 @@ export const translations = {
                         'Turkish language support'
                     ],
                     demoUrl: 'https://kocaseyithafriyat.com/',
-                    image: '/images/projects/kocaseyithafriyat.png'
+                    image: '/images/projects/kocaseyithafriyat.jpg'
                 },
                 {
                     id: 'konditori-sites',
@@ -262,7 +262,7 @@ export const translations = {
                         'Responsive design',
                         'Contact integration'
                     ],
-                    image: '/images/projects/konditori.png'
+                    image: '/images/projects/konditorilyran.jpg'
                 },
                 {
                     id: 'todo-app',
@@ -281,7 +281,7 @@ export const translations = {
                         'Progress tracking'
                     ],
                     githubUrl: 'https://github.com/OmerCeleb/todo-app',
-                    image: '/images/projects/todoapp.png'
+                    image: '/images/projects/todoapp.jpg'
                 },
                 {
                     id: 'mobile-app',
@@ -299,7 +299,7 @@ export const translations = {
                         'Performance optimized'
                     ],
                     githubUrl: 'https://github.com/OmerCeleb/mobile-app',
-                    image: '/images/projects/mobileapp.png'
+                    image: '/images/projects/nospend.jpg'
                 },
                 {
                     id: 'alexum-projects',
@@ -318,7 +318,7 @@ export const translations = {
                         'Startup environment experience'
                     ],
                     isNDA: true,
-                    image: '/images/projects/startup.png'
+                    image: '/images/projects/Alexum.jpg'
                 },
                 {
                     id: 'speedyli-platform',
@@ -337,7 +337,7 @@ export const translations = {
                         'API development'
                     ],
                     demoUrl: 'https://www.speedyli.com',
-                    image: '/images/projects/speedyli.png'
+                    image: '/images/projects/Speedy.jpg'
                 }
             ] as ProjectItem[]
         },
