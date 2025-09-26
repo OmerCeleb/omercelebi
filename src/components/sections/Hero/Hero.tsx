@@ -58,6 +58,9 @@ const Hero: React.FC = () => {
                 }}
             />
 
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/20"></div>
+
             {/* Subtle Grid Overlay */}
             <div className="absolute inset-0 opacity-[0.05]">
                 <div
@@ -90,18 +93,20 @@ const Hero: React.FC = () => {
                             <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
                             </motion.div>
 
-                            {/* Main Typography */}
+                            {/* Main Typography  */}
                             <motion.div variants={itemVariants} className="mb-8 lg:mb-12">
-                                {/* Name */}
-                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-[0.9] tracking-tight">
-                                    <span className="block text-black mb-6">{data.hello}</span>
+                                {/* Hello Text - Daha Professional */}
+                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.9] tracking-tight">
+                                    <span className="block text-white mb-6 drop-shadow-lg font-medium">
+                                        {data.hello}
+                                    </span>
 
-                                    {/* Clean Title Container */}
+                                    {/* Dynamic Title Container  */}
                                     <div className="relative min-h-[1.1em] w-full">
                                         <AnimatePresence mode="wait">
                                             <motion.span
                                                 key={currentTitle}
-                                                className="block text-red-600 font-normal"
+                                                className="block text-red-500 font-bold drop-shadow-lg"
                                                 initial={{ y: 40, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
                                                 exit={{ y: -40, opacity: 0 }}
@@ -117,18 +122,17 @@ const Hero: React.FC = () => {
                                 </h1>
                             </motion.div>
 
-                            {/* Minimal Description */}
+                            {/* Description  */}
                             <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
-                                <p className="text-xl md:text-2xl text-neutral-800 leading-relaxed font-light">
+                                <p className="text-xl md:text-2xl text-white leading-relaxed font-medium drop-shadow-md">
                                     {data.description}
-                                    <span className="block mt-4 text-black">
-                    {data.basedIn}
-                  </span>
+                                    <span className="block mt-4 text-white/95 font-normal">
+                                        {data.basedIn}
+                                    </span>
                                 </p>
                             </motion.div>
 
-
-                            {/* Clean Stats - Horizontal Layout for Mobile */}
+                            {/* Stats  */}
                             <motion.div variants={itemVariants} className="lg:hidden mb-16">
                                 <div className="flex justify-center items-center space-x-8 text-center">
                                     {[
@@ -138,15 +142,15 @@ const Hero: React.FC = () => {
                                     ].map((stat, index) => (
                                         <motion.div
                                             key={index}
-                                            className="group"
+                                            className="group bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 1 + (index * 0.2) }}
                                         >
-                                            <div className="text-2xl font-light text-black mb-1">
+                                            <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
                                                 {stat.number}
                                             </div>
-                                            <div className="text-xs text-black font-medium">
+                                            <div className="text-sm text-white/90 font-medium leading-tight">
                                                 {stat.label}
                                             </div>
                                         </motion.div>
@@ -156,29 +160,31 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
 
-
-                    {/* Clean Tech List - Full Width */}
+                    {/* Tech List  */}
                     <motion.div variants={itemVariants} className="mt-20 lg:mt-32">
                         <div className="max-w-4xl mx-auto text-center">
-                            <div className="text-xs text-neutral-400 mb-8 tracking-widest uppercase">
+                            <div className="text-sm text-white/80 mb-8 tracking-widest uppercase font-semibold drop-shadow-md">
                                 {data.technologies}
                             </div>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-white">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                                 {['React', 'TypeScript', 'Node.js', 'JavaScript', 'Java', 'Spring Boot', 'PostgreSQL', 'Git'].map((tech, index) => (
                                     <motion.div
                                         key={tech}
-                                        className="py-3 text-center border-b border-white/20 hover:border-red-300 transition-colors"
+                                        className="py-4 px-3 text-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-red-400/50 transition-all duration-300 hover:bg-white/15"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 1.8 + (index * 0.1) }}
                                     >
-                                        {tech}
+                                        <span className="text-white font-semibold drop-shadow-md">
+                                            {tech}
+                                        </span>
                                     </motion.div>
                                 ))}
                             </div>
                         </div>
                     </motion.div>
-                    {/* Scandinavian Scroll Indicator */}
+
+                    {/* Scroll Indicator - İyileştirilmiş */}
                     <motion.div
                         variants={itemVariants}
                         className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
@@ -190,22 +196,22 @@ const Hero: React.FC = () => {
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
-                            className="flex flex-col items-center text-neutral-400 cursor-pointer group hover:text-black transition-colors"
+                            className="flex flex-col items-center text-white/70 cursor-pointer group hover:text-white transition-colors"
                         >
-                            <div className="w-px h-16 bg-neutral-300 mb-4"></div>
-                            <ChevronDown size={18} />
+                            <div className="w-px h-16 bg-white/40 mb-4 drop-shadow-sm"></div>
+                            <ChevronDown size={20} className="drop-shadow-md" />
                         </motion.div>
                     </motion.div>
 
                 </motion.div>
             </div>
 
-            {/* Minimal Side Elements */}
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-xs text-neutral-400 tracking-widest rotate-90 origin-center">
+            {/* Side Elements  */}
+            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-xs text-white/60 tracking-widest rotate-90 origin-center font-semibold drop-shadow-md">
                 {data.sideText.portfolio}
             </div>
 
-            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 text-xs text-neutral-400 tracking-widest rotate-90 origin-center">
+            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 text-xs text-white/60 tracking-widest rotate-90 origin-center font-semibold drop-shadow-md">
                 {data.sideText.location}
             </div>
         </section>

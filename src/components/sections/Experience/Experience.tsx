@@ -51,15 +51,15 @@ const Experience: React.FC = () => {
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: `url("/images/Experience.png")`,
+                    backgroundImage: `url("/images/Experience.jpg")`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat"
                 }}
             />
 
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/85"></div>
+            {/* Stronger overlay for better readability */}
+            <div className="absolute inset-0 bg-white/90"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
@@ -72,10 +72,10 @@ const Experience: React.FC = () => {
 
                     {/* Section Header */}
                     <motion.div variants={itemVariants} className="text-center mb-20">
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-black mb-6">
+                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6 drop-shadow-sm">
                             {data.title}
                         </h2>
-                        <p className="text-xl md:text-2xl text-neutral-600 font-light">
+                        <p className="text-xl md:text-2xl text-gray-700 font-semibold max-w-3xl mx-auto leading-relaxed">
                             {data.subtitle}
                         </p>
                     </motion.div>
@@ -83,7 +83,7 @@ const Experience: React.FC = () => {
                     {/* Timeline */}
                     <div className="relative">
                         {/* Vertical Line */}
-                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-neutral-300 transform md:-translate-x-1/2"></div>
+                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-400 transform md:-translate-x-1/2 shadow-sm"></div>
 
                         {/* Experience Items */}
                         <div className="space-y-12">
@@ -103,8 +103,8 @@ const Experience: React.FC = () => {
                                     >
                                         {/* Timeline Node */}
                                         <motion.div
-                                            className="absolute left-8 md:left-1/2 w-4 h-4 bg-red-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 z-10 cursor-pointer"
-                                            whileHover={{ scale: 1.2 }}
+                                            className="absolute left-8 md:left-1/2 w-5 h-5 bg-red-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 z-10 cursor-pointer hover:bg-red-700 transition-colors"
+                                            whileHover={{ scale: 1.3 }}
                                             onClick={() => setActiveExperience(isActive ? null : exp.id)}
                                         />
 
@@ -114,45 +114,45 @@ const Experience: React.FC = () => {
                                             whileHover={{ scale: 1.02, y: -5 }}
                                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                         >
-                                            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                                            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                                                  onClick={() => setActiveExperience(isActive ? null : exp.id)}>
 
                                                 {/* Card Header */}
                                                 <div className="flex items-start justify-between mb-4">
                                                     <div className="flex items-center space-x-3">
-                                                        <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                                                            <IconComponent size={20} className="text-red-600" />
+                                                        <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shadow-sm">
+                                                            <IconComponent size={22} className="text-red-600" />
                                                         </div>
                                                         <div>
-                                                            <h3 className="text-xl font-semibold text-black">
+                                                            <h3 className="text-xl font-bold text-gray-900 leading-tight">
                                                                 {exp.company}
                                                             </h3>
-                                                            <p className="text-red-600 font-medium">
+                                                            <p className="text-red-600 font-semibold text-base">
                                                                 {exp.position}
                                                             </p>
                                                         </div>
                                                     </div>
                                                     {exp.id === 'postnord' && (
-                                                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                                                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-bold border border-green-200">
                                                             {data.current}
                                                         </span>
                                                     )}
                                                 </div>
 
-                                                {/* Period and Location */}
-                                                <div className="flex flex-wrap items-center text-sm text-neutral-600 mb-4 space-x-4">
-                                                    <div className="flex items-center space-x-1">
-                                                        <Calendar size={14} />
+                                                {/* Period and Location  */}
+                                                <div className="flex flex-wrap items-center text-sm text-gray-600 mb-4 space-x-4">
+                                                    <div className="flex items-center space-x-2 font-semibold">
+                                                        <Calendar size={16} className="text-gray-500" />
                                                         <span>{exp.period}</span>
                                                     </div>
-                                                    <div className="flex items-center space-x-1">
-                                                        <MapPin size={14} />
+                                                    <div className="flex items-center space-x-2 font-semibold">
+                                                        <MapPin size={16} className="text-gray-500" />
                                                         <span>{exp.location}</span>
                                                     </div>
                                                 </div>
 
                                                 {/* Description */}
-                                                <p className="text-neutral-700 mb-4 leading-relaxed">
+                                                <p className="text-gray-800 mb-4 leading-relaxed font-medium">
                                                     {exp.description}
                                                 </p>
 
@@ -163,14 +163,16 @@ const Experience: React.FC = () => {
                                                     className="overflow-hidden"
                                                 >
                                                     {isActive && (
-                                                        <div className="pt-4 border-t border-neutral-200">
+                                                        <div className="pt-4 border-t border-gray-200">
                                                             {/* Highlights */}
                                                             <div className="mb-4">
-                                                                <h4 className="font-semibold text-black mb-2">Key Highlights:</h4>
-                                                                <ul className="space-y-1">
+                                                                <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">
+                                                                    Key Highlights:
+                                                                </h4>
+                                                                <ul className="space-y-2">
                                                                     {exp.highlights.map((highlight: string, idx: number) => (
-                                                                        <li key={idx} className="text-sm text-neutral-600 flex items-start">
-                                                                            <span className="w-1 h-1 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                                        <li key={idx} className="text-sm text-gray-700 flex items-start font-medium">
+                                                                            <span className="w-2 h-2 bg-red-600 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
                                                                             {highlight}
                                                                         </li>
                                                                     ))}
@@ -180,10 +182,12 @@ const Experience: React.FC = () => {
                                                             {/* Technologies */}
                                                             {exp.technologies.length > 0 && (
                                                                 <div>
-                                                                    <h4 className="font-semibold text-black mb-2">Technologies:</h4>
+                                                                    <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">
+                                                                        Technologies:
+                                                                    </h4>
                                                                     <div className="flex flex-wrap gap-2">
                                                                         {exp.technologies.map((tech: string, idx: number) => (
-                                                                            <span key={idx} className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded">
+                                                                            <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-md font-semibold border border-gray-200 hover:bg-gray-200 transition-colors">
                                                                                 {tech}
                                                                             </span>
                                                                         ))}
@@ -198,9 +202,9 @@ const Experience: React.FC = () => {
                                                 <div className="text-center mt-4">
                                                     <motion.div
                                                         animate={{ rotate: isActive ? 180 : 0 }}
-                                                        className="w-6 h-6 mx-auto text-neutral-400"
+                                                        className="w-6 h-6 mx-auto text-gray-500 hover:text-gray-700 transition-colors"
                                                     >
-                                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
                                                             <path d="M7 10l5 5 5-5z"/>
                                                         </svg>
                                                     </motion.div>
@@ -217,8 +221,8 @@ const Experience: React.FC = () => {
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute bottom-20 left-16 w-px h-16 bg-neutral-300"></div>
-            <div className="absolute top-40 right-20 w-20 h-px bg-neutral-300"></div>
+            <div className="absolute bottom-20 left-16 w-px h-16 bg-gray-400 shadow-sm"></div>
+            <div className="absolute top-40 right-20 w-20 h-px bg-gray-400 shadow-sm"></div>
         </section>
     );
 };
