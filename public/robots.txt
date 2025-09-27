@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://omercelebi.se/sitemap.xml
+
+# Block unnecessary files
+Disallow: /static/js/
+Disallow: /static/css/
+Disallow: /_next/
+
+# Allow important assets
+Allow: /images/
+Allow: /static/media/
