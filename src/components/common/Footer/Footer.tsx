@@ -1,7 +1,7 @@
 // src/components/common/Footer/Footer.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, MapPin, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../contexts/LanguageContext';
 
@@ -10,31 +10,20 @@ const Footer: React.FC = () => {
     const navigate = useNavigate();
     const currentYear = new Date().getFullYear();
 
-    // Simple static data - no complex types
-    const footerData = {
+    const data = {
         en: {
-            description: 'Solution-oriented fullstack developer with expertise in both frontend and backend technologies. Based in Stockholm, available worldwide.',
-            status: 'Available for freelance projects',
-            location: 'Stockholm, Sweden',
-            quickLinksTitle: 'Quick Links',
-            connectTitle: 'Connect with me',
+            status: 'Available for projects',
             copyright: 'All rights reserved.',
-            madeWith: 'Made with love in Stockholm',
             backToTop: 'Back to top'
         },
         sv: {
-            description: 'Lösningsorienterad fullstackutvecklare med expertis inom både frontend och backend teknologier. Baserad i Stockholm, tillgänglig världen över.',
-            status: 'Tillgänglig för frilansuppdrag',
-            location: 'Stockholm, Sverige',
-            quickLinksTitle: 'Snabblänkar',
-            connectTitle: 'Anslut med mig',
+            status: 'Tillgänglig för projekt',
             copyright: 'Alla rättigheter förbehållna.',
-            madeWith: 'Gjord med kärlek i Stockholm',
             backToTop: 'Tillbaka upp'
         }
     };
 
-    const data = footerData[language];
+    const t = data[language];
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,14 +31,8 @@ const Footer: React.FC = () => {
 
     const handleNavigation = (path: string) => {
         navigate(path);
-
-        // Scroll to top on navigation
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
 
     const socialLinks = [
         { icon: Github, href: 'https://github.com/OmerCeleb', label: 'GitHub' },
@@ -58,160 +41,90 @@ const Footer: React.FC = () => {
     ];
 
     const quickLinks = [
-        { label: language === 'en' ? 'Home' : 'Hem', path: '/' },
         { label: language === 'en' ? 'About' : 'Om Mig', path: '/about' },
         { label: language === 'en' ? 'Experience' : 'Erfarenhet', path: '/experience' },
         { label: language === 'en' ? 'Projects' : 'Projekt', path: '/projects' },
         { label: language === 'en' ? 'Contact' : 'Kontakt', path: '/contact' }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                delayChildren: 0.2,
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: [0.25, 0.4, 0.25, 1]
-            }
-        }
-    };
-
     return (
-        <footer className="relative bg-gradient-to-br from-slate-50 via-neutral-50 to-gray-100 border-t border-neutral-200">
+        <footer className="relative bg-neutral-50 border-t border-neutral-200/60">
+            <div className="container mx-auto px-6">
+                <div className="max-w-4xl mx-auto">
 
-            {/* Subtle background pattern */}
-            <div className="absolute inset-0 opacity-[0.02]">
-                <div
-                    className="w-full h-full"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
-                        `,
-                        backgroundSize: "60px 60px",
-                    }}
-                />
-            </div>
+                    {/* Main Content */}
+                    <div className="py-12">
+                        <div className="text-center">
 
-            <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                    className="max-w-6xl mx-auto"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-
-                    {/* Main Footer Content */}
-                    <div className="py-16">
-                        <div className="grid lg:grid-cols-3 gap-12">
-
-                            {/* Brand Section */}
-                            <motion.div variants={itemVariants} className="lg:col-span-1">
-                                {/* PNG Logo - Centered */}
-                                <div className="text-center mb-8">
-                                    <img
-                                        src="/images/logo.png"
-                                        alt="Ömer Celebi Logo"
-                                        className="h-32 w-auto object-contain mx-auto"
-                                    />
-                                </div>
-
-                                <p className="text-neutral-600 mb-6 leading-relaxed">
-                                    {data.description}
+                            {/* Logo */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Ömer Celebi"
+                                    className="h-16 w-auto mx-auto mb-4"
+                                />
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                    Ömer Celebi
+                                </h3>
+                                <p className="text-gray-600 text-sm">
+                                    Fullstack Developer
                                 </p>
+                            </motion.div>
 
-                                {/* Status */}
-                                <div className="flex items-center space-x-2 mb-4">
+                            {/* Status */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                            >
+                                <div className="flex items-center justify-center space-x-2">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-green-600 text-sm font-medium">{data.status}</span>
-                                </div>
-
-                                {/* Location */}
-                                <div className="flex items-center space-x-2 text-neutral-500">
-                                    <MapPin size={16} />
-                                    <span className="text-sm">{data.location}</span>
-                                </div>
-
-                                {/* Contact Info */}
-                                <div className="mt-6 space-y-2">
-                                    <div className="flex items-center space-x-2 text-neutral-500 text-sm">
-                                        <Mail size={14} />
-                                        <a href="mailto:omer534@outlook.com" className="hover:text-red-600 transition-colors">
-                                            omer534@outlook.com
-                                        </a>
-                                    </div>
-                                    <div className="flex items-center space-x-2 text-neutral-500 text-sm">
-                                        <span>📱</span>
-                                        <a href="tel:+46739238707" className="hover:text-red-600 transition-colors">
-                                            +46 73 923 87 07
-                                        </a>
-                                    </div>
+                                    <span className="text-green-600 font-medium text-sm">
+                                        {t.status}
+                                    </span>
                                 </div>
                             </motion.div>
 
-                            {/* Quick Links */}
-                            <motion.div variants={itemVariants}>
-                                <h4 className="text-lg font-semibold text-black mb-6">{data.quickLinksTitle}</h4>
-                                <div className="grid grid-cols-2 gap-3">
+                            {/* Navigation Links */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
+                                <div className="flex flex-wrap justify-center gap-6 text-sm">
                                     {quickLinks.map((link, index) => (
                                         <motion.button
                                             key={index}
                                             onClick={() => handleNavigation(link.path)}
-                                            className="text-neutral-600 hover:text-red-600 transition-colors duration-200 flex items-center group text-sm text-left"
-                                            whileHover={{ x: 5 }}
+                                            className="text-gray-600 hover:text-red-600 transition-colors duration-200 font-medium"
+                                            whileHover={{ y: -2 }}
                                             transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                         >
-                                            <span>{link.label}</span>
+                                            {link.label}
                                         </motion.button>
                                     ))}
                                 </div>
-
-                                {/* Quick Contact */}
-                                <div className="mt-8">
-                                    <h4 className="text-lg font-semibold text-black mb-4">
-                                        {language === 'en' ? 'Quick Contact' : 'Snabb Kontakt'}
-                                    </h4>
-                                    <div className="space-y-3">
-                                        <motion.a
-                                            href="mailto:omer534@outlook.com?subject=Project Inquiry&body=Hi Ömer,%0D%0A%0D%0AI'm interested in discussing a project with you."
-                                            className="flex items-center space-x-2 text-neutral-600 hover:text-red-600 transition-colors text-sm"
-                                            whileHover={{ x: 5 }}
-                                        >
-                                            <Mail size={14} />
-                                            <span>{language === 'en' ? 'Send Email' : 'Skicka E-post'}</span>
-                                        </motion.a>
-                                        <motion.a
-                                            href="https://wa.me/46739238707"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center space-x-2 text-neutral-600 hover:text-green-600 transition-colors text-sm"
-                                            whileHover={{ x: 5 }}
-                                        >
-                                            <span>📱</span>
-                                            <span>WhatsApp</span>
-                                        </motion.a>
-                                    </div>
-                                </div>
                             </motion.div>
 
-                            {/* Connect Section */}
-                            <motion.div variants={itemVariants}>
-                                <h4 className="text-lg font-semibold text-black mb-6">{data.connectTitle}</h4>
-
-                                <div className="space-y-4 mb-8">
+                            {/* Social Links */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                            >
+                                <div className="flex justify-center space-x-4">
                                     {socialLinks.map((social, index) => {
                                         const IconComponent = social.icon;
                                         return (
@@ -220,79 +133,74 @@ const Footer: React.FC = () => {
                                                 href={social.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center space-x-3 text-neutral-600 hover:text-red-600 transition-all duration-200 group"
-                                                whileHover={{ x: 5 }}
-                                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                                className="w-10 h-10 bg-white border border-neutral-200 rounded-full flex items-center justify-center text-gray-600 hover:text-red-600 hover:border-red-200 hover:bg-red-50 transition-all duration-200 shadow-sm"
+                                                whileHover={{ scale: 1.1, y: -2 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                aria-label={social.label}
                                             >
-                                                <div className="w-10 h-10 bg-white border border-neutral-200 rounded-lg flex items-center justify-center group-hover:border-red-200 group-hover:bg-red-50 transition-colors shadow-sm">
-                                                    <IconComponent size={16} />
-                                                </div>
-                                                <span className="text-sm font-medium">{social.label}</span>
+                                                <IconComponent size={16} />
                                             </motion.a>
                                         );
                                     })}
                                 </div>
+                            </motion.div>
 
-                                {/* Scroll to Top Button */}
+                            {/* Back to Top */}
+                            <motion.div
+                                className="mb-8"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                            >
                                 <motion.button
                                     onClick={scrollToTop}
-                                    className="flex items-center space-x-2 text-neutral-600 hover:text-red-600 transition-colors duration-200 group"
+                                    className="inline-flex items-center space-x-2 px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-gray-700 rounded-full transition-colors duration-200 text-sm font-medium"
                                     whileHover={{ y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <div className="w-10 h-10 bg-white border border-neutral-200 rounded-lg flex items-center justify-center group-hover:border-red-200 group-hover:bg-red-50 transition-colors shadow-sm">
-                                        <ArrowUp size={16} />
-                                    </div>
-                                    <span className="text-sm font-medium">{data.backToTop}</span>
+                                    <ArrowUp size={14} />
+                                    <span>{t.backToTop}</span>
                                 </motion.button>
-
                             </motion.div>
+
                         </div>
                     </div>
 
                     {/* Bottom Bar */}
                     <motion.div
-                        variants={itemVariants}
-                        className="border-t border-neutral-200 py-8"
+                        className="border-t border-neutral-200/60 py-6"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 text-sm text-gray-500">
 
                             {/* Copyright */}
-                            <div className="text-neutral-500 text-sm text-center md:text-left">
-                                © {currentYear} Ömer Celebi. {data.copyright}
+                            <div>
+                                © {currentYear} Ömer Celebi. {t.copyright}
                             </div>
 
-                            {/* Made with Love */}
-                            <div className="flex items-center space-x-2 text-neutral-500 text-sm">
-                                <span>{data.madeWith.split(' ').slice(0, 2).join(' ')}</span>
-                                <motion.div
-                                    animate={{ scale: [1, 1.2, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
+                            {/* Contact Info */}
+                            <div className="flex items-center space-x-4">
+                                <a
+                                    href="mailto:omer534@outlook.com"
+                                    className="hover:text-red-600 transition-colors"
                                 >
-                                    <Heart size={14} className="text-red-500 fill-current" />
-                                </motion.div>
-                                <span>{data.madeWith.split(' ').slice(2).join(' ')}</span>
-                            </div>
-
-                            {/* Tech Stack */}
-                            <div className="flex items-center space-x-1 text-neutral-400 text-xs">
-                                {['React', 'TypeScript', 'Java', 'Node.js'].map((tech, index) => (
-                                    <React.Fragment key={tech}>
-                                        <span className="hover:text-red-500 transition-colors cursor-default">
-                                            {tech}
-                                        </span>
-                                        {index < 3 && <span>•</span>}
-                                    </React.Fragment>
-                                ))}
+                                    omer534@outlook.com
+                                </a>
+                                <span className="text-gray-300">•</span>
+                                <span>Stockholm, Sweden</span>
                             </div>
                         </div>
                     </motion.div>
 
-                </motion.div>
+                </div>
             </div>
 
             {/* Subtle gradient line at top */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-200 to-transparent"></div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-200/50 to-transparent"></div>
         </footer>
     );
 };

@@ -131,7 +131,7 @@ src/
 │   ├── common/
 │   │   ├── Header/           # Navigation & language toggle
 │   │   ├── Footer/           # Footer with links & info
-│   │   └── SEOHead/          # SEO meta tags component
+│   │   └── EnhancedSEOHead/          # SEO meta tags component
 │   └── sections/
 │       ├── Hero/             # Landing section with animations
 │       ├── About/            # Personal story & philosophy
