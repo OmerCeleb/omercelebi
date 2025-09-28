@@ -45,7 +45,7 @@ const Experience: React.FC = () => {
     };
 
     return (
-        <section className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+        <section className="relative min-h-screen py-12 sm:py-16 md:py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
 
             {/* Background Image */}
             <div
@@ -61,7 +61,7 @@ const Experience: React.FC = () => {
             {/* Stronger overlay for better readability */}
             <div className="absolute inset-0 bg-white/90"></div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     className="max-w-6xl mx-auto"
                     variants={containerVariants}
@@ -70,23 +70,25 @@ const Experience: React.FC = () => {
                     viewport={{ once: true, amount: 0.3 }}
                 >
 
-                    {/* Section Header */}
-                    <motion.div variants={itemVariants} className="text-center mb-20">
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6 drop-shadow-sm">
+                    {/* Section Header - Responsive */}
+                    <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16 lg:mb-20">
+                        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-4 sm:mb-6 drop-shadow-sm">
                             {data.title}
                         </h2>
-                        <p className="text-xl md:text-2xl text-gray-700 font-semibold max-w-3xl mx-auto leading-relaxed">
-                            {data.subtitle}
-                        </p>
+                        <div className="max-w-4xl mx-auto px-2">
+                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 font-semibold leading-relaxed">
+                                {data.subtitle}
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Timeline */}
+                    {/* Timeline - Mobile-first approach */}
                     <div className="relative">
-                        {/* Vertical Line */}
-                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-400 transform md:-translate-x-1/2 shadow-sm"></div>
+                        {/* Vertical Line - Responsive positioning */}
+                        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gray-400 transform lg:-translate-x-1/2 shadow-sm"></div>
 
                         {/* Experience Items */}
-                        <div className="space-y-12">
+                        <div className="space-y-8 sm:space-y-10 lg:space-y-12">
                             {data.experiences.map((exp: ExperienceItem, index: number) => {
                                 const IconComponent = getIcon(exp.icon);
                                 const isActive = activeExperience === exp.id;
@@ -95,64 +97,64 @@ const Experience: React.FC = () => {
                                 return (
                                     <motion.div
                                         key={exp.id}
-                                        className={`relative flex items-center ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
+                                        className={`relative flex items-center ${isLeft ? 'lg:justify-start' : 'lg:justify-end'}`}
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.8 + index * 0.2 }}
                                     >
-                                        {/* Timeline Node */}
+                                        {/* Timeline Node - Responsive positioning */}
                                         <motion.div
-                                            className="absolute left-8 md:left-1/2 w-5 h-5 bg-red-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 z-10 cursor-pointer hover:bg-red-700 transition-colors"
+                                            className="absolute left-4 sm:left-6 md:left-8 lg:left-1/2 w-4 h-4 sm:w-5 sm:h-5 bg-red-600 rounded-full border-2 sm:border-4 border-white shadow-lg transform -translate-x-1/2 z-10 cursor-pointer hover:bg-red-700 transition-colors"
                                             whileHover={{ scale: 1.3 }}
                                             onClick={() => setActiveExperience(isActive ? null : exp.id)}
                                         />
 
-                                        {/* Experience Card */}
+                                        {/* Experience Card - Mobile-first responsive */}
                                         <motion.div
-                                            className={`w-full md:w-5/12 ml-16 md:ml-0 ${!isLeft ? 'md:mr-16' : ''}`}
+                                            className={`w-full lg:w-5/12 ml-10 sm:ml-14 md:ml-16 lg:ml-0 ${!isLeft ? 'lg:mr-16' : ''}`}
                                             whileHover={{ scale: 1.02, y: -5 }}
                                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                         >
-                                            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                                            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                                                  onClick={() => setActiveExperience(isActive ? null : exp.id)}>
 
-                                                {/* Card Header */}
-                                                <div className="flex items-start justify-between mb-4">
-                                                    <div className="flex items-center space-x-3">
-                                                        <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shadow-sm">
-                                                            <IconComponent size={22} className="text-red-600" />
+                                                {/* Card Header - Responsive layout */}
+                                                <div className="flex flex-col sm:flex-row items-start justify-between mb-4">
+                                                    <div className="flex items-center space-x-3 mb-3 sm:mb-0">
+                                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center shadow-sm flex-shrink-0">
+                                                            <IconComponent size={18} className="sm:w-6 sm:h-6 text-red-600" />
                                                         </div>
-                                                        <div>
-                                                            <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                                                        <div className="min-w-0">
+                                                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 leading-tight">
                                                                 {exp.company}
                                                             </h3>
-                                                            <p className="text-red-600 font-semibold text-base">
+                                                            <p className="text-red-600 font-semibold text-sm sm:text-base">
                                                                 {exp.position}
                                                             </p>
                                                         </div>
                                                     </div>
                                                     {exp.id === 'postnord' && (
-                                                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-bold border border-green-200">
+                                                        <span className="px-2 sm:px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-bold border border-green-200 flex-shrink-0">
                                                             {data.current}
                                                         </span>
                                                     )}
                                                 </div>
 
-                                                {/* Period and Location  */}
-                                                <div className="flex flex-wrap items-center text-sm text-gray-600 mb-4 space-x-4">
+                                                {/* Period and Location - Responsive stack */}
+                                                <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-600 mb-4 space-y-1 sm:space-y-0 sm:space-x-4">
                                                     <div className="flex items-center space-x-2 font-semibold">
-                                                        <Calendar size={16} className="text-gray-500" />
-                                                        <span>{exp.period}</span>
+                                                        <Calendar size={14} className="text-gray-500 flex-shrink-0" />
+                                                        <span className="break-words">{exp.period}</span>
                                                     </div>
                                                     <div className="flex items-center space-x-2 font-semibold">
-                                                        <MapPin size={16} className="text-gray-500" />
-                                                        <span>{exp.location}</span>
+                                                        <MapPin size={14} className="text-gray-500 flex-shrink-0" />
+                                                        <span className="break-words">{exp.location}</span>
                                                     </div>
                                                 </div>
 
                                                 {/* Description */}
-                                                <p className="text-gray-800 mb-4 leading-relaxed font-medium">
+                                                <p className="text-sm sm:text-base text-gray-800 mb-4 leading-relaxed font-medium">
                                                     {exp.description}
                                                 </p>
 
@@ -166,14 +168,14 @@ const Experience: React.FC = () => {
                                                         <div className="pt-4 border-t border-gray-200">
                                                             {/* Highlights */}
                                                             <div className="mb-4">
-                                                                <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">
+                                                                <h4 className="font-bold text-gray-900 mb-3 text-xs sm:text-sm uppercase tracking-wide">
                                                                     Key Highlights:
                                                                 </h4>
                                                                 <ul className="space-y-2">
                                                                     {exp.highlights.map((highlight: string, idx: number) => (
-                                                                        <li key={idx} className="text-sm text-gray-700 flex items-start font-medium">
+                                                                        <li key={idx} className="text-xs sm:text-sm text-gray-700 flex items-start font-medium">
                                                                             <span className="w-2 h-2 bg-red-600 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                                                                            {highlight}
+                                                                            <span className="break-words">{highlight}</span>
                                                                         </li>
                                                                     ))}
                                                                 </ul>
@@ -182,12 +184,12 @@ const Experience: React.FC = () => {
                                                             {/* Technologies */}
                                                             {exp.technologies.length > 0 && (
                                                                 <div>
-                                                                    <h4 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">
+                                                                    <h4 className="font-bold text-gray-900 mb-3 text-xs sm:text-sm uppercase tracking-wide">
                                                                         Technologies:
                                                                     </h4>
                                                                     <div className="flex flex-wrap gap-2">
                                                                         {exp.technologies.map((tech: string, idx: number) => (
-                                                                            <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-md font-semibold border border-gray-200 hover:bg-gray-200 transition-colors">
+                                                                            <span key={idx} className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-md font-semibold border border-gray-200 hover:bg-gray-200 transition-colors">
                                                                                 {tech}
                                                                             </span>
                                                                         ))}
@@ -202,7 +204,7 @@ const Experience: React.FC = () => {
                                                 <div className="text-center mt-4">
                                                     <motion.div
                                                         animate={{ rotate: isActive ? 180 : 0 }}
-                                                        className="w-6 h-6 mx-auto text-gray-500 hover:text-gray-700 transition-colors"
+                                                        className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-gray-500 hover:text-gray-700 transition-colors"
                                                     >
                                                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
                                                             <path d="M7 10l5 5 5-5z"/>
@@ -220,9 +222,9 @@ const Experience: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Decorative Elements */}
-            <div className="absolute bottom-20 left-16 w-px h-16 bg-gray-400 shadow-sm"></div>
-            <div className="absolute top-40 right-20 w-20 h-px bg-gray-400 shadow-sm"></div>
+            {/* Decorative Elements - Hidden on mobile */}
+            <div className="hidden lg:block absolute bottom-20 left-16 w-px h-16 bg-gray-400 shadow-sm"></div>
+            <div className="hidden lg:block absolute top-40 right-20 w-20 h-px bg-gray-400 shadow-sm"></div>
         </section>
     );
 };

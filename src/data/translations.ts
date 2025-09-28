@@ -98,7 +98,7 @@ export const translations = {
                 alexum: {
                     title: 'Startup Experience',
                     period: '2025',
-                    content: '8 months at Alexum AB was an intensive startup experience. Focused primarily on frontend development with React and JavaScript while contributing to backend Node.js tasks. Participated in three diverse projects with a small development team.'
+                    content: '8 months at Alexum AB was an intensive startup experience. Focused primarily on frontend development with React and Typescript while contributing to backend Node.js tasks. Participated in three diverse projects with a small development team.'
                 } as StoryItem,
                 current: {
                     title: 'Today',
@@ -166,15 +166,15 @@ export const translations = {
                     duration: '8 months',
                     location: 'Stockholm, Sweden',
                     type: 'Startup Experience',
-                    description: 'Startup environment focused primarily on frontend development with React and JavaScript, while also contributing to backend Node.js tasks. Participated in three projects with a small development team.',
+                    description: 'Startup environment focused primarily on frontend development with React and Typescript, while also contributing to backend Node.js tasks. Participated in three projects with a small development team.',
                     highlights: [
-                        'Frontend focus with React & JavaScript',
+                        'Frontend focus with React & Typescript',
                         'Backend development with Node.js',
                         'Participated in 3 diverse projects',
                         'Small team collaboration',
                         'Problem-solving in startup environment'
                     ],
-                    technologies: ['React', 'JavaScript', 'Node.js', 'HTML', 'CSS', 'Git'],
+                    technologies: ['React', 'Typescript', 'Node.js', 'HTML', 'CSS', 'Git'],
                     icon: 'Building'
                 },
                 {
@@ -452,7 +452,7 @@ export const translations = {
                 alexum: {
                     title: 'Startup-Erfarenhet',
                     period: '2025',
-                    content: '8 månader på Alexum AB var en intensiv startup-upplevelse. Fokuserade främst på frontend-utveckling med React och JavaScript samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre olika projekt med ett litet utvecklingsteam.'
+                    content: '8 månader på Alexum AB var en intensiv startup-upplevelse. Fokuserade främst på frontend-utveckling med React och Typescript samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre olika projekt med ett litet utvecklingsteam.'
                 } as StoryItem,
                 current: {
                     title: 'Idag',
@@ -520,9 +520,9 @@ export const translations = {
                     duration: '8 månader',
                     location: 'Stockholm, Sverige',
                     type: 'Startup Erfarenhet',
-                    description: 'Startup-miljö fokuserad främst på frontend-utveckling med React och JavaScript, samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre projekt med ett litet utvecklingsteam.',
+                    description: 'Startup-miljö fokuserad främst på frontend-utveckling med React och Typescript, samtidigt som jag bidrog till backend Node.js-uppgifter. Deltog i tre projekt med ett litet utvecklingsteam.',
                     highlights: [
-                        'Frontend-fokus med React & JavaScript',
+                        'Frontend-fokus med React & TypeScript',
                         'Backend-utveckling med Node.js',
                         'Deltog i 3 olika projekt',
                         'Litet teamsamarbete',

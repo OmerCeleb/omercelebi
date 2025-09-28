@@ -68,7 +68,6 @@ const Header: React.FC = () => {
         });
     };
 
-
     const currentPage = getCurrentPage();
 
     // Animation variants
@@ -265,16 +264,16 @@ const Header: React.FC = () => {
                             onClick={() => setIsMenuOpen(false)}
                         />
 
-                        {/* Mobile Menu */}
+                        {/* Mobile Menu - Enhanced with proper scrolling */}
                         <motion.div
-                            className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-50 md:hidden shadow-2xl"
+                            className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-50 md:hidden shadow-2xl flex flex-col"
                             variants={menuVariants}
                             initial="closed"
                             animate="open"
                             exit="closed"
                         >
-                            {/* Menu Header */}
-                            <div className="relative h-32 bg-gradient-to-br from-slate-50 via-gray-50 to-stone-50 border-b border-gray-100/50">
+                            {/* Menu Header - Fixed */}
+                            <div className="flex-shrink-0 h-32 bg-gradient-to-br from-slate-50 via-gray-50 to-stone-50 border-b border-gray-100/50 relative">
 
                                 {/* Subtle Decorative Elements */}
                                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50/30 to-transparent rounded-full -translate-y-20 translate-x-20" />
@@ -303,8 +302,8 @@ const Header: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Navigation Items */}
-                            <div className="px-6 py-6 space-y-2 flex-1 overflow-y-auto">
+                            {/* Navigation Items - Scrollable */}
+                            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-2">
                                 {navItems.map((item, index) => {
                                     const IconComponent = item.icon;
                                     const isActive = currentPage === item.key;
@@ -363,8 +362,8 @@ const Header: React.FC = () => {
                                 })}
                             </div>
 
-                            {/* Footer Section */}
-                            <div className="px-6 py-6 border-t border-gray-100">
+                            {/* Footer Section - Fixed */}
+                            <div className="flex-shrink-0 px-6 py-6 border-t border-gray-100">
                                 <div className="space-y-4">
                                     {/* Contact Info */}
                                     <div className="text-center">

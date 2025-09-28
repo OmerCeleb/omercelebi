@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { translations } from '../../../data/translations';
+import emailjs from 'emailjs-com';
 
 const Contact: React.FC = () => {
     const { language } = useLanguage();
@@ -14,6 +15,12 @@ const Contact: React.FC = () => {
         message: ''
     });
     const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    // EmailJS Configuration
+    const EMAILJS_SERVICE_ID = "service_6o9crij";
+    const EMAILJS_TEMPLATE_ID_EN = "template_5xwwzjd";
+    const EMAILJS_TEMPLATE_ID_SV = "template_o58dmbw";
+    const EMAILJS_USER_ID = "roR5kXsxcI5pqbnXY";
 
     // Get translations for current language - with fallback
     let t;
@@ -80,16 +87,45 @@ const Contact: React.FC = () => {
         e.preventDefault();
         setFormStatus('sending');
 
-        // Simulate form submission
-        setTimeout(() => {
-            if (Math.random() > 0.1) {
-                setFormStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
-            } else {
-                setFormStatus('error');
-            }
-            setTimeout(() => setFormStatus('idle'), 3000);
-        }, 2000);
+        try {
+            // EmailJS template parameters
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+                to_email: 'omer534@outlook.com', // Your email
+                reply_to: formData.email,
+                language: language === 'en' ? 'English' : 'Swedish'
+            };
+
+            // Choose template based on language
+            const templateId = language === 'en' ? EMAILJS_TEMPLATE_ID_EN : EMAILJS_TEMPLATE_ID_SV;
+
+            // Send email via EmailJS
+            const response = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                templateId,
+                templateParams,
+                EMAILJS_USER_ID
+            );
+
+            console.log('Email sent successfully:', response);
+            setFormStatus('success');
+
+            // Clear form on success
+            setFormData({ name: '', email: '', subject: '', message: '' });
+
+            // Reset status after 5 seconds
+            setTimeout(() => setFormStatus('idle'), 5000);
+
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            setFormStatus('error');
+
+            // Reset status after 5 seconds
+            setTimeout(() => setFormStatus('idle'), 5000);
+        }
     };
 
     // Simple animation variants
@@ -103,7 +139,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section className="relative min-h-screen py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-neutral-900">
+        <section className="relative min-h-screen py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-neutral-900">
 
             {/* Background effects */}
             <div className="absolute inset-0">
@@ -111,10 +147,10 @@ const Contact: React.FC = () => {
                 {[...Array(3)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute rounded-full opacity-10"
+                        className="absolute rounded-full opacity-10 hidden sm:block"
                         style={{
-                            width: '200px',
-                            height: '200px',
+                            width: '150px',
+                            height: '150px',
                             top: `${20 + i * 30}%`,
                             left: `${10 + i * 25}%`,
                             background: 'radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%)',
@@ -133,7 +169,7 @@ const Contact: React.FC = () => {
                 ))}
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     className="max-w-7xl mx-auto"
                     initial="hidden"
@@ -147,29 +183,31 @@ const Contact: React.FC = () => {
                     }}
                 >
 
-                    {/* Header */}
-                    <motion.div variants={fadeIn} className="text-center mb-16">
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+                    {/* Header - Responsive typography */}
+                    <motion.div variants={fadeIn} className="text-center mb-12 sm:mb-16">
+                        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
                             {t.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto">
-                            {t.subtitle}
-                        </p>
+                        <div className="max-w-4xl mx-auto px-2">
+                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-semibold">
+                                {t.subtitle}
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Main Content */}
-                    <div className="grid lg:grid-cols-2 gap-16 mb-20">
+                    {/* Main Content - Responsive grid */}
+                    <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-12 sm:mb-16 lg:mb-20">
 
                         {/* Contact Form */}
                         <motion.div variants={fadeIn}>
-                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl">
-                                <h2 className="text-2xl font-bold text-white mb-6">
+                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-xl">
+                                <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
                                     {language === 'en' ? 'Send Message' : 'Skicka Meddelande'}
                                 </h2>
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                                     <div>
-                                        <label className="block text-white font-medium mb-2">
+                                        <label className="block text-white font-medium mb-2 text-sm sm:text-base">
                                             {t.form.name}
                                         </label>
                                         <input
@@ -178,13 +216,14 @@ const Contact: React.FC = () => {
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors text-sm sm:text-base"
                                             placeholder={t.form.name}
+                                            disabled={formStatus === 'sending'}
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-white font-medium mb-2">
+                                        <label className="block text-white font-medium mb-2 text-sm sm:text-base">
                                             {t.form.email}
                                         </label>
                                         <input
@@ -193,13 +232,14 @@ const Contact: React.FC = () => {
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors text-sm sm:text-base"
                                             placeholder={t.form.email}
+                                            disabled={formStatus === 'sending'}
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-white font-medium mb-2">
+                                        <label className="block text-white font-medium mb-2 text-sm sm:text-base">
                                             {t.form.subject}
                                         </label>
                                         <input
@@ -208,13 +248,14 @@ const Contact: React.FC = () => {
                                             value={formData.subject}
                                             onChange={handleInputChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors text-sm sm:text-base"
                                             placeholder={t.form.subject}
+                                            disabled={formStatus === 'sending'}
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-white font-medium mb-2">
+                                        <label className="block text-white font-medium mb-2 text-sm sm:text-base">
                                             {t.form.message}
                                         </label>
                                         <textarea
@@ -223,15 +264,16 @@ const Contact: React.FC = () => {
                                             onChange={handleInputChange}
                                             required
                                             rows={5}
-                                            className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors resize-none"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-red-400 transition-colors resize-none text-sm sm:text-base"
                                             placeholder={t.form.message}
+                                            disabled={formStatus === 'sending'}
                                         />
                                     </div>
 
                                     <motion.button
                                         type="submit"
                                         disabled={formStatus === 'sending'}
-                                        className={`w-full flex items-center justify-center space-x-2 px-8 py-4 rounded-lg font-bold transition-all ${
+                                        className={`w-full flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold transition-all text-sm sm:text-base ${
                                             formStatus === 'sending'
                                                 ? 'bg-gray-600 cursor-not-allowed'
                                                 : 'bg-red-600 hover:bg-red-700'
@@ -250,7 +292,7 @@ const Contact: React.FC = () => {
                                             </>
                                         ) : (
                                             <>
-                                                <Send size={18} />
+                                                <Send size={16} className="sm:w-5 sm:h-5" />
                                                 <span>{t.form.send}</span>
                                             </>
                                         )}
@@ -261,9 +303,9 @@ const Contact: React.FC = () => {
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="flex items-center space-x-2 text-green-300 font-medium"
+                                            className="flex items-center space-x-2 text-green-300 font-medium text-sm sm:text-base p-3 bg-green-500/20 rounded-lg border border-green-500/30"
                                         >
-                                            <CheckCircle size={18} />
+                                            <CheckCircle size={16} className="sm:w-5 sm:h-5" />
                                             <span>{t.form.success}</span>
                                         </motion.div>
                                     )}
@@ -272,9 +314,9 @@ const Contact: React.FC = () => {
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="flex items-center space-x-2 text-red-300 font-medium"
+                                            className="flex items-center space-x-2 text-red-300 font-medium text-sm sm:text-base p-3 bg-red-500/20 rounded-lg border border-red-500/30"
                                         >
-                                            <AlertCircle size={18} />
+                                            <AlertCircle size={16} className="sm:w-5 sm:h-5" />
                                             <span>{t.form.error}</span>
                                         </motion.div>
                                     )}
@@ -283,59 +325,59 @@ const Contact: React.FC = () => {
                         </motion.div>
 
                         {/* Contact Info */}
-                        <motion.div variants={fadeIn} className="space-y-8">
+                        <motion.div variants={fadeIn} className="space-y-6 sm:space-y-8">
 
                             {/* Contact Details */}
-                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl">
-                                <h3 className="text-2xl font-bold text-white mb-6">{t.contact.title}</h3>
+                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-xl">
+                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{t.contact.title}</h3>
 
-                                <div className="space-y-6">
-                                    <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
-                                            <Mail size={20} className="text-red-400" />
+                                <div className="space-y-4 sm:space-y-6">
+                                    <div className="flex items-center space-x-3 sm:space-x-4">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <Mail size={18} className="sm:w-5 sm:h-5 text-red-400" />
                                         </div>
-                                        <div>
-                                            <p className="text-gray-300 text-sm">{t.contact.email}</p>
-                                            <p className="text-white font-medium">{t.info.email}</p>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-300 text-sm sm:text-base">{t.contact.email}</p>
+                                            <p className="text-white font-medium text-sm sm:text-base break-all">{t.info.email}</p>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
-                                            <MapPin size={20} className="text-red-400" />
+                                    <div className="flex items-center space-x-3 sm:space-x-4">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <MapPin size={18} className="sm:w-5 sm:h-5 text-red-400" />
                                         </div>
-                                        <div>
-                                            <p className="text-gray-300 text-sm">{t.contact.location}</p>
-                                            <p className="text-white font-medium">{t.info.location}</p>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-300 text-sm sm:text-base">{t.contact.location}</p>
+                                            <p className="text-white font-medium text-sm sm:text-base">{t.info.location}</p>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-green-600/20 rounded-full flex items-center justify-center">
-                                            <CheckCircle size={20} className="text-green-400" />
+                                    <div className="flex items-center space-x-3 sm:space-x-4">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-600/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <CheckCircle size={18} className="sm:w-5 sm:h-5 text-green-400" />
                                         </div>
-                                        <div>
-                                            <p className="text-gray-300 text-sm">{t.contact.availability}</p>
-                                            <p className="text-white font-medium">{t.info.availability}</p>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-300 text-sm sm:text-base">{t.contact.availability}</p>
+                                            <p className="text-white font-medium text-sm sm:text-base">{t.info.availability}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Social Links */}
-                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl">
-                                <h3 className="text-2xl font-bold text-white mb-6">{t.social.title}</h3>
+                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-xl">
+                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{t.social.title}</h3>
 
-                                <div className="flex space-x-4">
+                                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                                     <motion.a
                                         href="https://github.com/OmerCeleb"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white"
+                                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white text-sm sm:text-base"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
-                                        <Github size={18} />
+                                        <Github size={16} className="sm:w-5 sm:h-5" />
                                         <span>{t.social.github}</span>
                                     </motion.a>
 
@@ -343,11 +385,11 @@ const Contact: React.FC = () => {
                                         href="https://www.linkedin.com/in/omercelebii/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white"
+                                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white text-sm sm:text-base"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
-                                        <Linkedin size={18} />
+                                        <Linkedin size={16} className="sm:w-5 sm:h-5" />
                                         <span>{t.social.linkedin}</span>
                                     </motion.a>
                                 </div>
@@ -355,17 +397,19 @@ const Contact: React.FC = () => {
                         </motion.div>
                     </div>
 
-                    {/* CTA */}
+                    {/* CTA - Responsive design */}
                     <motion.div variants={fadeIn} className="text-center">
-                        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-12 shadow-xl">
-                            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-xl">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
                                 {t.cta.title}
                             </h3>
-                            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-                                {t.cta.description}
-                            </p>
+                            <div className="max-w-3xl mx-auto">
+                                <p className="text-base sm:text-lg md:text-xl text-red-100 mb-6 sm:mb-8 leading-relaxed">
+                                    {t.cta.description}
+                                </p>
+                            </div>
                             <motion.button
-                                className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
+                                className="bg-white text-red-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >

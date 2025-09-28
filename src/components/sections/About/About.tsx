@@ -44,49 +44,60 @@ const About: React.FC = () => {
     };
 
     return (
-        <section className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-gray-50">
-            <div className="absolute inset-0"
-                 style={{
-                     backgroundImage: `url("/images/OmMig.jpg")`,
-                     backgroundSize: "cover",
-                     backgroundPosition: "center",
-                     backgroundRepeat: "no-repeat"
-                 }}
+        <section className="relative min-h-screen py-12 sm:py-16 md:py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-gray-50">
+
+            {/* Background Image */}
+            <div
+                className="absolute inset-0"
+                style={{
+                    backgroundImage: `url("/images/OmMig.jpg")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat"
+                }}
             />
             <div className="absolute inset-0 bg-white/90" />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     className="max-w-7xl mx-auto"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
-                    {/* Header  */}
-                    <motion.div variants={itemVariants} className="text-center mb-20">
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6">
+                    {/* Header - Enhanced responsive typography */}
+                    <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16 lg:mb-20">
+                        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-4 sm:mb-6 leading-tight">
                             {data.title}
                         </h2>
-                        <p className="text-xl md:text-2xl text-gray-700 font-medium max-w-3xl mx-auto leading-relaxed">
-                            {data.introduction}
-                        </p>
+                        <div className="max-w-5xl mx-auto px-2">
+                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 font-medium leading-relaxed">
+                                {data.introduction}
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Story Cards  */}
-                    <motion.div variants={itemVariants} className="mb-24">
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {Object.entries(data.story).map(([key, story]) => {
+                    {/* Story Cards - Enhanced responsive grid */}
+                    <motion.div variants={itemVariants} className="mb-16 sm:mb-20 lg:mb-24">
+                        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                            {Object.entries(data.story).map(([key, story], index) => {
                                 const storyItem = story as StoryItem;
                                 return (
-                                    <motion.div key={key} className="group" variants={itemVariants}>
-                                        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
-                                            <div className="text-xs text-red-600 font-bold mb-3 tracking-wider uppercase">
+                                    <motion.div
+                                        key={key}
+                                        className="group"
+                                        variants={itemVariants}
+                                        whileHover={{ y: -8, scale: 1.02 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    >
+                                        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col min-h-[280px] sm:min-h-[320px] lg:min-h-[300px]">
+                                            <div className="text-xs sm:text-sm text-red-600 font-bold mb-2 sm:mb-3 tracking-wider uppercase">
                                                 {storyItem.period}
                                             </div>
-                                            <h3 className="text-xl font-bold text-gray-900 mb-4 flex-shrink-0">
+                                            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-3 sm:mb-4 flex-shrink-0 leading-tight">
                                                 {storyItem.title}
                                             </h3>
-                                            <p className="text-gray-700 leading-relaxed text-sm flex-grow font-medium">
+                                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed flex-grow font-medium">
                                                 {storyItem.content}
                                             </p>
                                         </div>
@@ -96,36 +107,44 @@ const About: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Philosophy Quote  */}
-                    <motion.div variants={itemVariants} className="mb-24">
-                        <div className="max-w-5xl mx-auto text-center bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-lg">
-                            <blockquote className="text-2xl md:text-3xl text-gray-900 font-semibold leading-relaxed italic">
-                                "{data.philosophy}"
-                            </blockquote>
+                    {/* Philosophy Quote - Enhanced responsive spacing */}
+                    <motion.div variants={itemVariants} className="mb-16 sm:mb-20 lg:mb-24">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 lg:p-12 border border-gray-200 shadow-lg text-center">
+                                <blockquote className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-900 font-semibold leading-relaxed italic">
+                                    "{data.philosophy}"
+                                </blockquote>
+                            </div>
                         </div>
                     </motion.div>
 
-                    {/* Approach Section  */}
-                    <motion.div variants={itemVariants} className="mb-24">
-                        <div className="text-center mb-12">
-                            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    {/* Approach Section - Ultra responsive grid */}
+                    <motion.div variants={itemVariants} className="mb-16 sm:mb-20 lg:mb-24">
+                        <div className="text-center mb-8 sm:mb-12">
+                            <h3 className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                                 {data.approach.title}
                             </h3>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                             {data.approach.items.map((item: ApproachItem, index: number) => {
                                 const IconComponent = getIcon(item.icon);
                                 return (
-                                    <motion.div key={index} className="group text-center" variants={itemVariants} whileHover={{ scale: 1.05 }}>
-                                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                                            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors">
-                                                <IconComponent size={24} className="text-red-600" />
+                                    <motion.div
+                                        key={index}
+                                        className="group text-center"
+                                        variants={itemVariants}
+                                        whileHover={{ scale: 1.05, y: -5 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    >
+                                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[200px] flex flex-col">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-red-200 transition-colors flex-shrink-0">
+                                                <IconComponent size={18} className="sm:w-6 sm:h-6 text-red-600" />
                                             </div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-3">
+                                            <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3 flex-shrink-0 leading-tight">
                                                 {item.title}
                                             </h4>
-                                            <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-medium flex-grow">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -135,22 +154,25 @@ const About: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Current Focus  */}
+                    {/* Current Focus - Enhanced responsive text */}
                     <motion.div variants={itemVariants} className="text-center">
-                        <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-lg p-8 border border-gray-200 shadow-lg">
-                            <p className="text-lg text-gray-800 mb-6 leading-relaxed font-medium">
-                                {data.currentFocus}
-                            </p>
-                            <p className="text-sm text-gray-600 font-semibold tracking-wide">
-                                {data.location}
-                            </p>
+                        <div className="max-w-5xl mx-auto">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 sm:p-8 lg:p-12 border border-gray-200 shadow-lg">
+                                <p className="text-base sm:text-lg md:text-xl text-gray-800 mb-4 sm:mb-6 leading-relaxed font-medium">
+                                    {data.currentFocus}
+                                </p>
+                                <p className="text-sm sm:text-base text-gray-600 font-semibold tracking-wide">
+                                    {data.location}
+                                </p>
+                            </div>
                         </div>
                     </motion.div>
                 </motion.div>
             </div>
 
-            <div className="absolute bottom-20 left-10 w-px h-20 bg-gray-300" />
-            <div className="absolute top-40 right-16 w-16 h-px bg-gray-300" />
+            {/* Decorative Elements - Hidden on mobile */}
+            <div className="hidden lg:block absolute bottom-20 left-10 w-px h-20 bg-gray-300 opacity-60" />
+            <div className="hidden lg:block absolute top-40 right-16 w-16 h-px bg-gray-300 opacity-60" />
         </section>
     );
 };
